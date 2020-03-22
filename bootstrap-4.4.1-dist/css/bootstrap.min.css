@@ -1,0 +1,242 @@
+
+
+
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 50%;
+			background: White !important;
+		}
+.user_card {
+	height: 300px;
+	width: 250px;
+	margin-top: auto;
+	margin-bottom: auto;
+	background: gray;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 0px;
+
+}
+
+.brand_logo {
+	margin-top: 150px;
+	height: 100px;
+	width: 200px;
+}
+
+.form_container {
+	text-align:center;
+    width:100%;
+    max-width:100%;
+	margin:auto;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.login_btn {
+	width: 30%;
+	padding: 4px;
+	background: #0CAFA8 !important;
+	color: white !important;
+}
+		
+.login_btn:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+
+.input-group-text {
+	background: #c0392b !important;
+	color: white !important;
+	border: 0 !important;
+	border-radius: 25rem 100000rem !important;
+}
+
+.input_user,
+.input_pass:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+	background-color: gray !important;
+}
+	
+		
+.logo{
+	margin-top:1%;
+	margin-left:2%;
+	display: inline-block;		
+	float:left;
+	height: 100%;
+}
+
+.ident{
+	margin-top:1%;
+	margin-right:2%;
+	display: inline-block;		
+	float:right;
+	width:120px;
+	height:120px;
+	
+}
+		
+.Biblio{
+	position:absolute;
+	margin-left: 40%;
+	margin-top:35px;			
+}
+
+		
+.img{
+	vertical-align: middle;
+}	
+		
+	
+header {
+	position: relative;
+	height: 145px;
+	width: 100%;
+	background: #BAB9B8;
+}		
+		
+label {
+	
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+	
+    margin: .4rem 0;
+}		
+
+.recherche{
+	position: absolute;
+	right:5%;
+	top: 145px;
+	width: 200px;
+}
+
+.cher{
+	position: absolute;
+	right:20%;
+}
+	
+.bouton{
+	position: absolute;
+	top:11px;
+	right:7px;
+	font-size:50;
+}
+	
+	
+.iconjeu{
+position: absolute;
+top: 145px;
+left: 320px;
+}	
+
+.textjeu{
+	position: absolute;
+	top: 155px;
+	left: 425px;
+}		
+
+.iconlivre{
+	position: absolute;
+	top: 145px;
+	left: 10px;
+}
+
+.textlivre{
+	position: absolute;
+	top: 150px;
+	left: 100px;
+}
+
+.texteclassement{
+	margin-left:5%;
+}
+
+.cadre1 {
+	border-radius: 30px;
+	height: 180px;
+	width: 90%;
+	margin-top: 50px;
+	background: #BAB9B8;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 3px;
+
+}
+
+.cadre2 {
+	border-radius: 30px;
+	height: 180px;
+	width: 90%;
+	margin-top: 50px;
+	background: #BAB9B8;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 3px;
+
+}
+
+.cadre3 {
+	border-radius: 30px;
+	height: 180px;
+	width: 90%;
+	margin-top: 50px;
+	background: #BAB9B8;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 3px;
+
+}
+
+.livre {
+	border-radius: 50px;
+	height: 500px; 
+	width: 90%;
+	margin-top: 10px;
+	background: #BAB9B8;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 3px;
+
+}
+
+	
