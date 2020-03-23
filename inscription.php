@@ -7,7 +7,7 @@ if(isset($_POST['forminscription']))
 	$pass = $_POST['pass'];
 	
 	
-	$dsn = "mysql:host=localhost;dbname=veretz";
+	$dsn = "mysql:host=localhost;charset=utf8;dbname=veretz";
 	$user = "root";
 	$passwd = "";
 
