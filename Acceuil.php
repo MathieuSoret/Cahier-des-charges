@@ -24,7 +24,7 @@ if(isset($_POST['formconnexion']))
 		$req->execute(array($_POST['pseudo']));
 		$donnees = $req->fetch();
 		
-		if(!empty($donnees['pseudoCompte']))
+		if(!empty($donnees['pseudoCompte'])AND empty($donnees['mpCompte'] == 'admin'))
 		{
 			
 			$req = $pdo->prepare('SELECT * FROM compte WHERE mpCompte = ?');
@@ -34,19 +34,30 @@ if(isset($_POST['formconnexion']))
 			if(!empty($donnees['mpCompte']))
 			{
 				echo"ok tout est bon";
-				
+				header('Location: pageacceuil.php');
+				exit;
 				
 			}
+			
+			else if (empty($donnees['mpCompte'] == '$2y$10$6DlNnD5Y/B9DKDHKV0G2mebWpfEuEoPDQOXUcrTbGN29a/ElOS9fq') )
+			{
+				echo"ok tout est bon";
+				header('Location: admin.php');
+				exit;
+			}
+			
+			
 			else
 			{
 				$erreur = "le mot de passe n'est pas bon !";
 			}
 		}
-		else
+		else 
 		{
 			$erreur = "Ce compte n'existe pas !";
 		}
 	}
+
 	else
 	{
 		$erreur = "Tous les champs doivent être renplit !";

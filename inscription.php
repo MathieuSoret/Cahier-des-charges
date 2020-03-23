@@ -97,7 +97,10 @@ if(isset($_POST['forminscription']))
 	</table>
 	<br>
 	<input type="submit" name="forminscription" value="Je m'inscris"/>
-	<input type="submit" name="forminscription" value="Retour à la page d'acceuil"/>
+	
+	
+	<a href="Acceuil.php"><input type="button" value="Retour à la page d'acceuil"/></a>
+	
 	
 </form>
 	
