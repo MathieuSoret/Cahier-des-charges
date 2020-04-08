@@ -69,7 +69,7 @@ if(isset($_POST['formdéco']))
 
 			<div class="recherche">
 
-				<label for="site-search">Search the site:</label>
+				<label for="site-search">Nom du livre à rechercher:</label>
 				<input type="search" id="site-search" name="q" >
 
 				<button>Recherche du livre</button>
@@ -99,7 +99,6 @@ if(isset($_POST['formdéco']))
 			<div class="textlivre">
 				<label for="site-search"><font size="12">Livres</font></label> 
 			</div>
-
 			
 
 		</nav>
