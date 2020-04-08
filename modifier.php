@@ -2,7 +2,8 @@
 
 if(isset($_POST['formmodifier'])) 
 {
-	
+	$pseudo = $_POST['pseudo'];
+	$pass = $_POST['pass'];
 	$pseudo2 = $_POST['pseudo2'];
 	$pass2 = $_POST['pass2'];
 	
@@ -30,14 +31,14 @@ if(isset($_POST['formmodifier']))
 			
 			if (!empty($donnees['mpCompte']))
 			{
-				$requeteupdate = $pdo->prepare('UPDATE compte SET pseudoCompte = "'. $pseudo2 .'" ');
-				$requeteupdate->execute(array($_POST['pseudo2']));
+				$requeteupdate = $pdo->prepare('UPDATE compte SET pseudoCompte = "'. $pseudo2 .'" WHERE pseudoCompte = "'. $pseudo .'" ');
+				$requeteupdate->execute(array($_POST['pseudo2'] ) );
 			
 			
-				$requeteupdate = $pdo->prepare('UPDATE compte SET mpCompte = "'. $pass2 .'" ');
-				$requeteupdate->execute(array($_POST['pass2']));
+				$requeteupdate = $pdo->prepare('UPDATE compte SET mpCompte = "'. $pass2 .'" WHERE mpCompte =  "'. $pass .'" ');
+				$requeteupdate->execute(array($_POST['pass2'] ) );
 				
-				$erreur = "C'est bon le compte à bien était modifier !";
+				$erreur = "C'est bon, le compte à bien était modifier !";
 			}
 			else
 			{
