@@ -29,8 +29,8 @@ if(isset($_POST['formdéco']))
 <head>
 
     <meta charset="utf-8" />
-	<link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="petite_resolution.css" />
+	<link rel="stylesheet" href="css/css.css" />
     <title>Bibliothéque de Veretz </title>
 	
 </head>
@@ -69,14 +69,10 @@ if(isset($_POST['formdéco']))
 
 			<div class="recherche">
 
-				<div class="cher">
-					<font size="6"><input type="search" id="site-search" name="q" placeholder="Nom du livre recherché:" ></font>
-				</div>
-				
-				
-				<div class="bouton">
-					<button><img src="image/loupe.png" alt="" width="17" height="17"/></button>
-				</div>
+				<label for="site-search">Search the site:</label>
+				<input type="search" id="site-search" name="q" >
+
+				<button>Recherche du livre</button>
 
 			</div>
 

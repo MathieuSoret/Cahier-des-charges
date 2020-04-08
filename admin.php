@@ -8,7 +8,7 @@ session_start();
 <head>
 
     <meta charset="utf-8" />
-	<link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/css.css" />
     <title>Bibliothéque de Veretz</title>
 	</head>
 	<body>
@@ -36,8 +36,8 @@ session_start();
 </header>
 
 <center>
-<input type="submit" name="forminscription" value="Ajoutez un livre"/>
-<input type="submit" name="forminscription" value="modifier un livre"/>
+<a href="ajouterLivre.php"><input type="submit" name="formajouter" value="Ajoutez un livre"/></a>
+<a href="modifierLivre.php"><input type="submit" name="formmodifierL" value="modifier un livre"/></a>
 <br><br><br>
 <a href="inscription.php"><input type="submit" name="forminscription" value="Ajouter un membre"/></a>
 <a href="supprimer.php"><input type="submit" name="formsupprimer" value="Supprimer un membre"/></a>

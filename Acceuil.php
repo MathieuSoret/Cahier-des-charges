@@ -88,12 +88,12 @@ if(isset($_POST['formconnexion']))
 <html>
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="petite_resolution.css" />
+	<link rel="stylesheet" href="css/css.css" />
     <title>Bibliothéque de Veretz</title>
 </head>
 admin : $2y$10$V3lb3C8NFxeSoyjOWVzVK.IEjMm2lNmPBnOboAk.VQzlim00DwtbG <br>
-mathieu : $2y$10$Kih8Eow1YoR3dBZqPpUnh.pPQJQI1aJu.D.CsbsrrNU9XZCbxvRpe <br>
+mathieu : 123 <br>
 autre : $2y$10$MCobACWS1YtvWFu2BlgmHezgNFXz9gdbXI09yqJkAkeqWKIvecrAS
 <body>
 

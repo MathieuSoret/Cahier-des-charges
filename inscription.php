@@ -64,8 +64,8 @@ if(isset($_POST['forminscription']))
 
 <head>
     <meta charset="utf-8" />
-	<link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="petite_resolution.css" />
+	<link rel="stylesheet" href="css/css.css" />
     <title>Bibliothéque de Veretz</title>
 	</head>
 	
