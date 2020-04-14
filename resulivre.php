@@ -1,5 +1,19 @@
 <?php
 session_start();
+
+if (isset($_SESSION['pseudoCompte']))
+{
+	if(isset($_POST['formdéco']))
+	{
+		// Suppression des variables de session et de la session
+		$_SESSION = array();
+		session_destroy();
+
+		// Suppression des cookies de connexion automatique
+		setcookie('login', '');
+		setcookie('pass_hache', '');
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +44,7 @@ session_start();
 					
 					<main>
 						<div class="Biblio">		
-							<h1>Librairie de Veretz</h1>
+							<h1>Librairie de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
 						</div>
 					</main>
 							  

@@ -87,7 +87,7 @@ elseif (isset($_POST['recherche']))
 
 
 			
-		<form action="recherche.php">
+		<form action="pageacceuil.php">
 		
 			<div class="recherche">
 
@@ -134,7 +134,7 @@ elseif (isset($_POST['recherche']))
 		<div class="texteclassement">
 
 			<div style="margin-top: 200px;"><font size="12">
-			Les plus recherchés :
+			Information trouvé grâce au mot  :
 			</font></div>
 
 		</div>
@@ -163,62 +163,8 @@ elseif (isset($_POST['recherche']))
 					</div>
 				</div>
 			</div>
-			
-			
-			<div class="container h-100">
-				<div class="d-flex justify-content-center h-100">
-					<div class="cadre2">
-
-						<div class="d-flex justify-content-center form_container">
-							<form>
-								<div class="input-group mb-3">
-									<div class="input-group-append">
-										<span class="input-group-text"><i class="fas fa-user"></i></span>
-									</div>
-									<label for="site-search">Nom du Livre:</label>
-								</div>
-								
-							<div class="d-flex justify-content-center mt-3 login_container">
-								<button type="button" name="button" class="btn login_btn"> <a href="resulivre.php">Voir plus de détail sur le livre en question</button></a>
-						   </div>
-							</form>
-						</div>
-				
 				
 						
-						
-					</div>
-				</div>
-			</div>
-			
-			
-			<div class="container h-100">
-				<div class="d-flex justify-content-center h-100">
-					<div class="cadre3">
-
-						<div class="d-flex justify-content-center form_container">
-							<form>
-								<div class="input-group mb-3">
-									<div class="input-group-append">
-										<span class="input-group-text"><i class="fas fa-user"></i></span>
-									</div>
-									<label for="site-search">Nom du Livre:</label>							
-								</div>
-								
-								
-							<div class="d-flex justify-content-center mt-3 login_container">
-								<button type="button" name="button" class="btn login_btn"> <a href="resulivre.php">Voir plus de détail sur le livre en question</button></a>
-						   </div>
-							</form>
-						</div>
-				
-				
-						
-						
-					</div>
-				</div>
-			</div>
-			
 	</div>	
 <center>
 			<footer>
@@ -231,10 +177,3 @@ elseif (isset($_POST['recherche']))
 </center>
 	
 </html>
-
-
-
-
-
-
-
