@@ -178,6 +178,7 @@ if(isset($_POST['formajouter']))
 <br>
 <input type="submit" name="formajouter" value="J'ajoute se livre à la bibliothèque"/>
 </form>
+<br>
 <a href="admin.php"><input type="submit" name="formretour" value="Retour à la page admin"/></a>
 
 <?php
