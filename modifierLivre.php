@@ -119,7 +119,7 @@ if(isset($_POST['formmodifierL']))
 									{
 										$erreur = "Ce n'est pas la bonne description !";
 									}
-									
+								
 							}
 							else
 							{
@@ -131,7 +131,7 @@ if(isset($_POST['formmodifierL']))
 						{
 							$erreur = "Cette date de première édition n'existe pas !";
 						}
-							
+						
 					}
 					else
 					{

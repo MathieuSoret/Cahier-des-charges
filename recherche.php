@@ -21,20 +21,16 @@ if (isset($_SESSION['pseudoCompte']))
 
 
 
-elseif (isset($_POST['recherche']))
-{
-	if(!empty($_GET['q'])) 
-	{
-		$livre = $pdo->prepare('SELECT veretz FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre DESC');
-        $livre->execute(array("%".$_GET['q']."%"));
-		$donnees = $livre->fetch();
+
+
+// elseif (isset($_POST['button']))
+// {
+	
+	// $resume = $pdo->prepare('SELECT * FROM livre WHERE descriptionLivre = nomLivre');
+    // $resume->execute(array());
+	// $donnees2 = $resume->fetch();
 		
-		
-	}	
-}
-
-
-
+// }
 
 
 
@@ -83,14 +79,15 @@ elseif (isset($_POST['recherche']))
 
 
 			
-		<form action="recherche.php">
+		<form method="GET" action="recherche.php">
 		
-			<div class="recherche">
+			<div class="recherche" >
 
 				<label for="site-search">Nom du livre à rechercher:</label>
-				<input type="search" id="site-search" name="q" >
-
-				<button>Recherche du livre</button>
+				<input type="search" name="q" placeholder="Nom livre ..."/>
+				<input type="submit" value="Valider" name="recherche"/>
+				
+				
 
 			</div>
 			
@@ -130,66 +127,80 @@ elseif (isset($_POST['recherche']))
 		<div class="texteclassement">
 
 			<div style="margin-top: 200px;"><font size="12">
-			Information trouvé grâce au mot  : " <?php if ($donnees = $_GET['q']){echo $donnees;}  else{$erreur = "Ce livre n'éxiste pas dans la bibliothèque !";}?> "
+			Information trouvé grâce au mot  : " <?php if ($donnees = $_GET['q']){echo $donnees;} else	{$erreur = "Ce livre n'éxiste pas dans la bibliothèque !";}?> "
 			</font></div>
 
 		</div>
 
 		<center>
 		
-			<div class="container h-100">
-				<div class="d-flex justify-content-center h-100">
-					<div class="cadre1">
+		
+		
+		
+		<?php 
+			if (isset($_GET['recherche']))
+			{
+		?>
+				<div class="container h-100">
+					<div class="d-flex justify-content-center h-100">
+						<div class="cadre1">
 
-						<div class="d-flex justify-content-center form_container">
-							<form>
-								<div class="input-group mb-3">
-									<label for="site-search">Nom du Livre: <?php if ($donnees = $_GET['q']){echo $donnees;}  else{$erreur = "Ce livre n'éxiste pas dans la bibliothèque !";}?></label>							
-								</div>
-								
-							<div class="d-flex justify-content-center mt-3 login_container"> 
-								<button type="button" name="button" class="btn login_btn"> <a href="resulivre.php">Voir plus de détail sur le livre en question</button></a>
-						   </div>
-							</form>
+							<div class="d-flex justify-content-center form_container">
+								<form>
+									<div class="input-group mb-3">
+										<label for="site-search">Nom du Livre: <?php if(!empty($_GET['q'])) 
+																						{
+																							$stmt = $pdo->prepare('SELECT * FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre ASC');
+																							$stmt->execute(['%' . $_GET['q'] . '%']);
+																							if ($livre = $stmt->fetch())
+																							{	
+																								do 
+																								{ 
+																									echo htmlspecialchars($livre['nomLivre']);
+																									
+																				?>
+																				
+																										<div class="d-flex justify-content-center mt-3 login_container"> 
+																											<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>	
+																										</div>
+																										
+																				<?php
+																								} 
+																								while ($livre = $stmt->fetch());
+																							} 
+																							else 
+																							{
+																								$erreur = "Ce livre n'éxiste pas !";
+																							}
+																						}
+																				?> 
+																				</label>	
+																				<?php
+																					if(isset($erreur))
+																					{
+																					echo '<font color="red">'.$erreur."</font>";
+																					}
+																				?>
+																				
+									</div>							
+								</form>
+							</div>	
 						</div>
-				
-				
-						
-						
 					</div>
 				</div>
-			</div>
+			
+		<?php
+			
+			}
+		?>
+		
 			
 			
 			
 			
-			<div class="container h-100">
-				<div class="d-flex justify-content-center h-100">
-					<div class="cadre1">
-
-						<div class="d-flex justify-content-center form_container">
-							<form>
-								<div class="input-group mb-3">
-									<label for="site-search">Nom du Livre: </label>							
-								</div>
-								
-							<div class="d-flex justify-content-center mt-3 login_container"> 
-								<button type="button" name="button" class="btn login_btn"> <a href="resulivre.php">Voir plus de détail sur le livre en question</button></a>
-						   </div>
-							</form>
-						</div>
-				
-				
-						
-						
-					</div>
-				</div>
-			</div>
 			
 			
 			
-				
-						
 	</div>	
 <center>
 			<footer>
@@ -198,7 +209,10 @@ elseif (isset($_POST['recherche']))
 				<div class="butonDéco">
 				<a href="Acceuil.php"><input type="submit" name="formdéco" value="Se déconnecter !"/></a>
 				</div>
-			</footer>		
+			</footer>	
+
+
+			
 </center>
 	
 </html>

@@ -94,7 +94,7 @@ if(isset($_POST['formconnexion']))
 </head>
 admin : $2y$10$V3lb3C8NFxeSoyjOWVzVK.IEjMm2lNmPBnOboAk.VQzlim00DwtbG <br>
 mathieu : 123 <br>
-autre : $2y$10$MCobACWS1YtvWFu2BlgmHezgNFXz9gdbXI09yqJkAkeqWKIvecrAS
+q : s
 <body>
 
 <form action="Acceuil.php" method="post">

@@ -14,6 +14,8 @@ if (isset($_SESSION['pseudoCompte']))
 		setcookie('pass_hache', '');
 	}
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +94,10 @@ if (isset($_SESSION['pseudoCompte']))
 							
 								<div class="livre">
 								
-									<img src="image/HP_les_reliques_de_la_mort.jpg" height="300px"  width="200px" />
+								
+									
+									
+									
 									
 									<div class="d-flex justify-content-center form_container">
 										<form>
@@ -104,7 +109,19 @@ if (isset($_SESSION['pseudoCompte']))
 											</div>
 											
 											<div class="d-flex justify-content-center mt-3 login_container">
-												<button type="button" name="button" class="btn login_btn"> <a href="pageacceuil.php">Emprunter</button></a>
+										
+										
+										
+										
+											<form action="resulivre.php">
+												<button type="button" name="button" class="btn login_btn" >Emprunter</button>	
+											</form>	
+												
+												
+												
+												
+												
+												
 											</div>
 											
 										</form>

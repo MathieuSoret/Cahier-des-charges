@@ -9,7 +9,7 @@ if(isset($_POST['formajouter']))
 	$etat = $_POST['etat'];
 	$Date = $_POST['Date'];
 	$description = $_POST['description'];
-	
+	$nombre = $_POST['nombre'];
 	
 	$dsn = "mysql:host=localhost;charset=utf8;dbname=veretz";
 	$user = "root";
@@ -19,9 +19,9 @@ if(isset($_POST['formajouter']))
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
 	
-		
-		
-	if(!empty($_POST['nom']) AND !empty($_POST['auteur']) AND !empty($_POST['edition']) AND !empty($_POST['genre']) AND !empty($_POST['etat']) AND !empty($_POST['Date']) AND !empty($_POST['description']) )
+	
+	
+	if(!empty($_POST['nom']) AND !empty($_POST['auteur']) AND !empty($_POST['edition']) AND !empty($_POST['genre']) AND !empty($_POST['etat']) AND !empty($_POST['Date']) AND !empty($_POST['description'])AND !empty($_POST['nombre']))
 	{
 
 		$req = $pdo->prepare('SELECT * FROM livre WHERE nomLivre = ?');
@@ -30,7 +30,7 @@ if(isset($_POST['formajouter']))
 		if (empty($donnees['nomLivre'])) 
 		{
 			
-			$stm = $pdo->prepare("INSERT INTO livre(nomLivre, auteurLivre, editionLivre,genreLivre,etatLivre, datepremiereditionLivre, descriptionLivre ) VALUES(:nom, :auteur, :edition, :genre, :etat, :Date, :description)");
+			$stm = $pdo->prepare("INSERT INTO livre(nomLivre, auteurLivre, editionLivre,genreLivre,etatLivre, datepremiereditionLivre, descriptionLivre, nbLivre) VALUES(:nom, :auteur, :edition, :genre, :etat, :Date, :description, :nombre)");
 			$stm->execute(array(
 			':nom' => $nom, 
 			':auteur' => $auteur,
@@ -38,8 +38,13 @@ if(isset($_POST['formajouter']))
 			':genre' => $genre,
 			':etat' => $etat,
 			':Date' => $Date,
-			':description' => $description
+			':description' => $description,
+			':nombre' => $nombre	
 			));
+			
+		
+			
+			
 			$erreur ='Bonjour, le livre " ' . $nom .  ' " à bien était enregistrer !';
 			
 		}
@@ -164,11 +169,20 @@ if(isset($_POST['formajouter']))
 				<label for="description">Description Livre :</label>
 			</td>
 			<td>
-				<input type="text" placeholder="Description du ivre" id="description" name="description"/>
+				<input type="text" placeholder="Description du livre" id="description" name="description"/>
 			</td>
 	
 		</tr>
 		
+		<tr>
+			<td align="right">
+				<label for="description">Nombre de Livre :</label>
+			</td>
+			<td>
+				<input type="text" placeholder="Nombre de livre disponible" id="nombre" name="nombre"/>
+			</td>
+	
+		</tr>
 		
 		
 	</table>

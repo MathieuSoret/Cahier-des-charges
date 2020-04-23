@@ -21,14 +21,16 @@ if (isset($_SESSION['pseudoCompte']))
 
 
 
-elseif (isset($_POST['recherche']))
+if (isset($_GET['recherche']))
 {
 	if(!empty($_GET['q'])) 
 	{
-		$livre = $pdo->prepare('SELECT veretz FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre DESC');
+		
+
+		$livre = $pdo->prepare('SELECT * FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre DESC');
         $livre->execute(array("%".$_GET['q']."%"));
 		$donnees = $livre->fetch();
-		
+		var_dump($donnees);
 		
 	}	
 }
@@ -80,13 +82,15 @@ elseif (isset($_POST['recherche']))
 
 
 			
-		<form method="GET" action="recherche.php" >
+		<form method="GET" action="recherche.php">
 		
-			<div class="recherche">
+			<div class="recherche" >
 
 				<label for="site-search">Nom du livre à rechercher:</label>
 				<input type="search" name="q" placeholder="Nom livre ..."/>
-				<input type="submit" value="Valider" />
+				<input type="submit" value="Valider" name="recherche"/>
+				
+				
 
 			</div>
 			
@@ -145,24 +149,11 @@ elseif (isset($_POST['recherche']))
 						<div class="d-flex justify-content-center form_container">
 							<form>
 								<div class="input-group mb-3">
-									<label for="site-search">Nom du Livre: <?php if ($donnees = $_GET['q']){echo $donnees;}  else{$erreur = "Ce livre n'éxiste pas dans la bibliothèque !";}?> </label>							
-								</div>
-							
-
-
-
-
-							
-							 
-							
-
-
-
-
-
-							
+									<label for="site-search">Nom du Livre:  </label>							
+								</div>	
+								
 							<div class="d-flex justify-content-center mt-3 login_container">
-								<button type="button" name="button" class="btn login_btn"> <a href="resulivre.php">Voir plus de détail sur le livre en question</button></a>
+								<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
 						   </div>
 							</form>
 						</div>
@@ -188,7 +179,7 @@ elseif (isset($_POST['recherche']))
 								</div>
 								
 							<div class="d-flex justify-content-center mt-3 login_container">
-								<button type="button" name="button" class="btn login_btn"> <a href="resulivre.php">Voir plus de détail sur le livre en question</button></a>
+								<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
 						   </div>
 							</form>
 						</div>
@@ -216,7 +207,7 @@ elseif (isset($_POST['recherche']))
 								
 								
 							<div class="d-flex justify-content-center mt-3 login_container">
-								<button type="button" name="button" class="btn login_btn"> <a href="resulivre.php">Voir plus de détail sur le livre en question</button></a>
+								<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
 						   </div>
 							</form>
 						</div>
