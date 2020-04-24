@@ -16,6 +16,8 @@ if (isset($_SESSION['pseudoCompte']))
 }
 
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +83,7 @@ if (isset($_SESSION['pseudoCompte']))
 				<div class="texteclassement">
 
 				<div style="margin-top: 150px;"><font size="10">
-				Résumé du Livre :
+				Résumé du Livre : 
 				</font></div>
 
 				</div>

@@ -20,20 +20,6 @@ if (isset($_SESSION['pseudoCompte']))
 }
 
 
-
-
-
-// elseif (isset($_POST['button']))
-// {
-	
-	// $resume = $pdo->prepare('SELECT * FROM livre WHERE descriptionLivre = nomLivre');
-    // $resume->execute(array());
-	// $donnees2 = $resume->fetch();
-		
-// }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -50,72 +36,70 @@ if (isset($_SESSION['pseudoCompte']))
 	<body>
 	<div id="bloc_page">
 	
-			<nav>
+		<nav>
 
-				<header>
-					<div class="back">	
+					<header>
+						<div class="back">	
 
-					<div class="logo">
-						<a href="https://www.veretz.com/"><img src="image/logo.png" alt=""></a>
-					</div>
-				
-				
-					<div class="iden">
-						<img src="image/iden.png" class="ident" alt="">
-					</div>
-				
-				
-					<main>
-						<div class="Biblio">		
-							<h1>Librairie de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
+						<div class="logo">
+							<a href="https://www.veretz.com/"><img src="image/logo.png" alt=""></a>
 						</div>
-					</main>
+					
+					
+						<div class="iden">
+							<img src="image/iden.png" class="ident" alt="">
+						</div>
+					
+					
+						<main>
+							<div class="Biblio">		
+								<h1>Librairie de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
+							</div>
+						</main>
+					
+				  
+						</div>
+					</header>
+
+
+
+
 				
-			  
-					</div>
-				</header>
-
-
-
-
+			<form method="GET" action="recherche.php">
 			
-		<form method="GET" action="recherche.php">
-		
-			<div class="recherche" >
+				<div class="recherche" >
 
-				<label for="site-search">Nom du livre à rechercher:</label>
-				<input type="search" name="q" placeholder="Nom livre ..."/>
-				<input type="submit" value="Valider" name="recherche"/>
+					<label for="site-search">Nom du livre à rechercher:</label>
+					<input type="search" name="q" placeholder="Nom livre ..."/>
+					<input type="submit" value="Valider" name="recherche"/>
+										
+				</div>
 				
-				
-
-			</div>
-			
-		</form>
+			</form>
 
 
-			<div class="iconjeu">
-				<a href="jeu.php">
-					<img src="image/base.png" alt="" width="300" height="70"/>
-				</a>
-			</div>
+				<div class="iconjeu">
+					<a href="jeu.php">
+						<img src="image/base.png" alt="" width="300" height="70"/>
+					</a>
+				</div>
 
 
-			<div class="textjeu">
-				<label for="site-search"><font size="6">Jeu</font></label> 
-			</div>
+				<div class="textjeu">
+					<label for="site-search"><font size="6">Jeu</font></label> 
+				</div>
 
 
-			<div class="iconlivre">
-				<a href="pageacceuil.php">
-					<img src="image/base2.png" alt="" width="300" height="90"/>
-				</a>
-			</div>
+				<div class="iconlivre">
+					<a href="pageacceuil.php">
+						<img src="image/base2.png" alt="" width="300" height="90"/>
+					</a>
+				</div>
 
 
-			<div class="textlivre">
-				<label for="site-search"><font size="12">Livres</font></label> 
-			</div>
+				<div class="textlivre">
+					<label for="site-search"><font size="12">Livres</font></label> 
+				</div>
 			
 
 		</nav>
@@ -137,62 +121,83 @@ if (isset($_SESSION['pseudoCompte']))
 		
 		
 		
-		<?php 
-			if (isset($_GET['recherche']))
-			{
-		?>
-				<div class="container h-100">
-					<div class="d-flex justify-content-center h-100">
-						<div class="cadre1">
-
-							<div class="d-flex justify-content-center form_container">
-								<form>
-									<div class="input-group mb-3">
-										<label for="site-search">Nom du Livre: <?php if(!empty($_GET['q'])) 
-																						{
-																							$stmt = $pdo->prepare('SELECT * FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre ASC');
-																							$stmt->execute(['%' . $_GET['q'] . '%']);
-																							if ($livre = $stmt->fetch())
-																							{	
-																								do 
-																								{ 
-																									echo htmlspecialchars($livre['nomLivre']);
-																									
-																				?>
-																				
-																										<div class="d-flex justify-content-center mt-3 login_container"> 
-																											<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>	
-																										</div>
+<?php 
+if (isset($_GET['recherche']))
+{
+?>
+		
+	 <?php if(!empty($_GET['q'])) 
+		{
+		$stmt = $pdo->prepare('SELECT * FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre ASC');
+		$stmt->execute(['%' . $_GET['q'] . '%']);
+		if ($livre = $stmt->fetch())
+		{	
+	
+			do 
+			{ 
 																										
-																				<?php
-																								} 
-																								while ($livre = $stmt->fetch());
-																							} 
-																							else 
-																							{
-																								$erreur = "Ce livre n'éxiste pas !";
-																							}
-																						}
-																				?> 
-																				</label>	
-																				<?php
-																					if(isset($erreur))
-																					{
-																					echo '<font color="red">'.$erreur."</font>";
-																					}
-																				?>
+				?>
 																				
-									</div>							
-								</form>
-							</div>	
-						</div>
-					</div>
-				</div>
+				<div class="container h-100">
+					
+							<div class="d-flex justify-content-center h-100">
+								<div class="cadre1">
+																													
+									<div class="d-flex justify-content-center form_container">
+										<form>
+											<div class="input-group mb-3">
+																																	
+												<label for="site-search">Nom du Livre: <?php echo htmlspecialchars($livre['nomLivre']); ?>
+													<div class="d-flex justify-content-center mt-3 login_container"> 
+																														
+														<form action="resulivre.php">
+															<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
+														</form>
+																															
+													</div>		
+												</label>
+											</div>		
+											
+										</form>
+										
+									</div>	
+									
+								</div>
+								
+							</div>
+						
+						</div>																						
+																										
+				<?php
+			} 
+				while ($livre = $stmt->fetch());
+					 
+							
+											
+						
+					
+						
+		} 
+	else 
+	{
+		$erreur = "Ce livre n'éxiste pas !";
+	}
+}
+?> 
+																					
+	<?php
+	if(isset($erreur))
+	{
+	echo '<font color="red">'.$erreur."</font>";
+	}
+	?>
+																	
+									
 			
-		<?php
+<?php
 			
-			}
-		?>
+}
+?>
 		
 			
 			
