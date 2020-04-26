@@ -113,11 +113,13 @@ if (isset($_SESSION['pseudoCompte']))
 											<div class="d-flex justify-content-center mt-3 login_container">
 										
 										
+											<?php  //Lire la description
+											
+												
+											
+											?>
 										
-										
-											<form action="resulivre.php">
-												<button type="button" name="button" class="btn login_btn" >Emprunter</button>	
-											</form>	
+												
 												
 												
 												
@@ -138,6 +140,9 @@ if (isset($_SESSION['pseudoCompte']))
 	<footer>
         <p>Adresse: rue Moreau Vincent, 37270 Véretz</p>
 		<p>Numéro: 02 47 35 70 13</p>
+		<div class="butonDéco">
+		<a href="Acceuil.php"><input type="submit" name="formdéco" value="Se déconnecter !"/></a>
+		</div>
 		
     </footer>
 

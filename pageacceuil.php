@@ -30,7 +30,7 @@ if (isset($_GET['recherche']))
 		$livre = $pdo->prepare('SELECT * FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre DESC');
         $livre->execute(array("%".$_GET['q']."%"));
 		$donnees = $livre->fetch();
-		var_dump($donnees);
+		
 		
 	}	
 }

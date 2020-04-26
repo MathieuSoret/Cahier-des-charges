@@ -51,7 +51,7 @@ if(isset($_POST['formmodifierL']))
 			
 				$req = $pdo->prepare('SELECT * FROM livre WHERE editionLivreLivre = ?');
 				$req->execute(array($_POST['edition']));
-				$donnees = $req->fetch();
+				$donnees = $req2->fetch();
 				
 				if (!empty($donnees['editionLivre']))
 				{
@@ -206,153 +206,156 @@ if(isset($_POST['formmodifierL']))
 <h2>Modifier un livre</h2>
 <br><br>
 
+<form action="modifierLivre.php" method="post">
 
-<table>
-		<tr>
-			<td align="right">
-				<label for="nom">Nom Livre :</label> 
-			</td>
-			<td>
-				<input type="text" placeholder="Nom du livre" id="nom" name="nom" />
-			</td>
-		</tr>
-		<tr>
-			<td align="right">
-				<label for="nom2">Nouveau Nom du Livre:</label> 
-			</td>
-			<td>
-				<input type="text" placeholder="Nom du livre" id="nom2" name="nom2" />
-			</td>
-		</tr>
+	<table>
+			<tr>
+				<td align="right">
+					<label for="nom">Nom Livre :</label> 
+				</td>
+				<td>
+					<input type="text" placeholder="Nom du livre" id="nom" name="nom" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					<label for="nom2">Nouveau Nom du Livre:</label> 
+				</td>
+				<td>
+					<input type="text" placeholder="Nom du livre" id="nom2" name="nom2" />
+				</td>
+			</tr>
+			
+			
+			
+			<tr>
+				<td align="right">
+					<label for="auteur">Auteur Livre :</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Nom de l'auteur" id="auteur" name="auteur"/>
+				</td>
 		
+			</tr>
+			<tr>
+				<td align="right">
+					<label for="auteur2">Nouveau Auteur de Livre:</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Nom de l'auteur" id="auteur2" name="auteur2"/>
+				</td>
 		
+			</tr>
+			
+			
+			
+			<tr>
+				<td align="right">
+					<label for="edition">Édition Livre :</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Edition du livre" id="edition" name="edition"/>
+				</td>
 		
-		<tr>
-			<td align="right">
-				<label for="auteur">Auteur Livre :</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Nom de l'auteur" id="auteur" name="auteur"/>
-			</td>
-	
-		</tr>
-		<tr>
-			<td align="right">
-				<label for="auteur2">Nouveau Auteur de Livre:</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Nom de l'auteur" id="auteur2" name="auteur2"/>
-			</td>
-	
-		</tr>
+			</tr>
+			<tr>
+				<td align="right">
+					<label for="edition2">Nouveau Édition du Livre:</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Edition du livre" id="edition2" name="edition2"/>
+				</td>
 		
+			</tr>
+			
+			
+			
+			<tr>
+				<td align="right">
+					<label for="genre">Genre Livre :</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Genre du livre" id="genre" name="genre"/>
+				</td>
 		
+			</tr>
+			<tr>
+				<td align="right">
+					<label for="genre2">Nouveau Genre du Livre:</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Genre du livre" id="genre2" name="genre2"/>
+				</td>
 		
-		<tr>
-			<td align="right">
-				<label for="edition">Édition Livre :</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Edition du livre" id="edition" name="edition"/>
-			</td>
-	
-		</tr>
-		<tr>
-			<td align="right">
-				<label for="edition2">Nouveau Édition du Livre:</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Edition du livre" id="edition2" name="edition2"/>
-			</td>
-	
-		</tr>
+			</tr>
+			
+			
+			<tr>
+				<td align="right">
+					<label for="etat">État Livre :</label>
+				</td>
+				<td>
+					<input type="text" placeholder="État du livre" id="etat" name="etat"/>
+				</td>
 		
+			</tr>
+			<tr>
+				<td align="right">
+					<label for="etat2">Nouveau État du Livre:</label>
+				</td>
+				<td>
+					<input type="text" placeholder="État du livre" id="etat2" name="etat2"/>
+				</td>
 		
+			</tr>
+			
+			
+			
+			<tr>
+				<td align="right">
+					<label for="Date">Date Première Édition Livre:</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Date première édition du livre" id="Date" name="Date"/>
+				</td>
 		
-		<tr>
-			<td align="right">
-				<label for="genre">Genre Livre :</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Genre du livre" id="genre" name="genre"/>
-			</td>
-	
-		</tr>
-		<tr>
-			<td align="right">
-				<label for="genre2">Nouveau Genre du Livre:</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Genre du livre" id="genre2" name="genre2"/>
-			</td>
-	
-		</tr>
+			</tr>
+			<tr>
+				<td align="right">
+					<label for="Date2">Nouveau Date Première Édition Livre:</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Date première édition du livre" id="Date2" name="Date2"/>
+				</td>
 		
+			</tr>
+			
+			
+			
+			<tr>
+				<td align="right">
+					<label for="description">Description Livre:</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Description du ivre" id="description" name="description"/>
+				</td>
 		
-		<tr>
-			<td align="right">
-				<label for="etat">État Livre :</label>
-			</td>
-			<td>
-				<input type="text" placeholder="État du livre" id="etat" name="etat"/>
-			</td>
-	
-		</tr>
-		<tr>
-			<td align="right">
-				<label for="etat2">Nouveau État du Livre:</label>
-			</td>
-			<td>
-				<input type="text" placeholder="État du livre" id="etat2" name="etat2"/>
-			</td>
-	
-		</tr>
+			</tr>
+			<tr>
+				<td align="right">
+					<label for="description2">Nouveau Description du Livre:</label>
+				</td>
+				<td>
+					<input type="text" placeholder="Description du ivre" id="description2" name="description2"/>
+				</td>
 		
-		
-		
-		<tr>
-			<td align="right">
-				<label for="Date">Date Première Édition Livre:</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Date première édition du livre" id="Date" name="Date"/>
-			</td>
-	
-		</tr>
-		<tr>
-			<td align="right">
-				<label for="Date2">Nouveau Date Première Édition Livre:</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Date première édition du livre" id="Date2" name="Date2"/>
-			</td>
-	
-		</tr>
-		
-		
-		
-		<tr>
-			<td align="right">
-				<label for="description">Description Livre:</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Description du ivre" id="description" name="description"/>
-			</td>
-	
-		</tr>
-		<tr>
-			<td align="right">
-				<label for="description2">Nouveau Description du Livre:</label>
-			</td>
-			<td>
-				<input type="text" placeholder="Description du ivre" id="description2" name="description2"/>
-			</td>
-	
-		</tr>
-		
-		
-		
-	</table>
+			</tr>
+			
+			
+			
+		</table>
+
+</form>
 
 <br>
 <input type="submit" name="formmodifierL" value="Modifier le livre"/>

@@ -37,13 +37,17 @@ session_start();
 
 <center>
 <a href="ajouterLivre.php"><input type="submit" name="formajouter" value="Ajoutez un livre"/></a>
-<a href="modifierLivre.php"><input type="submit" name="formmodifierL" value="modifier un livre"/></a>
+<a href="supprimerLivre.php"><input type="submit" name="formsupprimerL" value="Supprimer un livre"/></a>
+<a href="modifierLivre.php"><input type="submit" name="formmodifierL" value="Modifier un livre"/></a>
+
 <br><br><br>
 <a href="inscription.php"><input type="submit" name="forminscription" value="Ajouter un membre"/></a>
 <a href="supprimer.php"><input type="submit" name="formsupprimer" value="Supprimer un membre"/></a>
 <a href="modifier.php"><input type="submit" name="formmodifier" value="Modifier un compte"/></a>
+
 <br><br><br>
 <a href="Acceuil.php"><input type="submit" name="formRetour" value="Retourner à la page d'acceuil"/></a>
+
 </center>
 
 </body>

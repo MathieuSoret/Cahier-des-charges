@@ -135,27 +135,73 @@ if (isset($_GET['recherche']))
 	
 			do 
 			{ 
-																										
+				
 				?>
-																				
+					
 				<div class="container h-100">
 					
 							<div class="d-flex justify-content-center h-100">
+							
 								<div class="cadre1">
-																													
+									
 									<div class="d-flex justify-content-center form_container">
+									
 										<form>
+										
 											<div class="input-group mb-3">
-																																	
+											
 												<label for="site-search">Nom du Livre: <?php echo htmlspecialchars($livre['nomLivre']); ?>
+												
 													<div class="d-flex justify-content-center mt-3 login_container"> 
-																														
-														<form action="resulivre.php">
+													<br>
+														<form action="resulivre.php" method="GET">
+														
 															<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
+															
+															<?php 
+															
+															if (isset($_GET['button']))
+																{
+																	$res = $pdo->prepare ('SELECT * FROM livre descriptionLivre LIKE nomLivre ');
+																	$res->execute(array($_GET['button']));
+																	$donnees = $res->fetch();
+																}
+															
+															?>
+															<br><br>
+															<form action="resulivre.php">
+																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>	
+													
+																<?php  //Gérer les emprunts
+																
+																if (isset($_POST['buttonE']))
+																{
+																	$emp = $pdo -> prepare ('SELECT * FROM livre WHERE nbLivre = ? AND nomLivre = ?');
+																	$emp->execute();
+																	$empL = $emp->fetch();
+																	
+																	if($empL > 0)
+																	{
+																		$empL--;
+																		$erreur = "Ce livre à bien était emprunté !";
+																	}
+																	else
+																	{
+																		$erreur = "Nous n'avons plus se livre en stock !";
+																	}
+																}
+																
+																?>
+																
+															</form>	
+															
 														</form>
-																															
-													</div>		
+														
+														
+													</div>
+													
 												</label>
+												
 											</div>		
 											
 										</form>
@@ -180,7 +226,45 @@ if (isset($_GET['recherche']))
 		} 
 	else 
 	{
-		$erreur = "Ce livre n'éxiste pas !";
+		
+	?>
+	
+	<div class="container h-100">
+					
+							<div class="d-flex justify-content-center h-100">
+							
+								<div class="cadre1">
+									
+									<div class="d-flex justify-content-center form_container">
+									
+										<form>
+										
+											<div class="input-group mb-3">
+											
+												<label for="site-search">Nom du Livre: 
+												
+													<div class="d-flex justify-content-center mt-3 login_container"> 
+													
+														<?php $erreur = "Ce livre n'éxiste pas !"; ?>
+														
+													</div>
+													
+												</label>
+												
+											</div>		
+											
+										</form>
+										
+									</div>	
+									
+								</div>
+								
+							</div>
+						
+						</div>
+	
+	<?php
+		
 	}
 }
 ?> 
@@ -204,7 +288,7 @@ if (isset($_GET['recherche']))
 			
 			
 			
-			
+<br><br><br>
 			
 	</div>	
 <center>
