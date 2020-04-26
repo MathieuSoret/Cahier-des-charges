@@ -1,13 +1,10 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
     <meta charset="utf-8" />
+	<!-- Nous permet de gérer le disegn de notre page -->
 	<link rel="stylesheet" href="css/css.css" />
     <title>Bibliothéque de Veretz</title>
 	</head>
@@ -34,7 +31,7 @@ session_start();
  
  </div>
 </header>
-
+<!-- Ici nous avons tous les boutons qui vont nous permettre d'accéder au page qui nous intéresse -->
 <center>
 <a href="ajouterLivre.php"><input type="submit" name="formajouter" value="Ajoutez un livre"/></a>
 <a href="supprimerLivre.php"><input type="submit" name="formsupprimerL" value="Supprimer un livre"/></a>

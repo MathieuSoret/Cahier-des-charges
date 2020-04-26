@@ -6,9 +6,10 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['formsupprimer']))
 {	
-	
+	//Vérifie si l'ID éxiste.
 	if (!empty($_POST['id']))
 	{
+		//Permet de supprimer un compte grâce à l'ID et à la formule "DELETE"
 		$req = $pdo->prepare('DELETE FROM compte WHERE idCompte = ?');
 		$req->execute(array($_POST['id']));
 		
@@ -62,7 +63,7 @@ if(isset($_POST['formsupprimer']))
 <h2>Page de suppression d'un compte</h2>
 <br><br>
 
-
+<!-- il s'agit du formulaire pour supprimer le compte. -->
 <center>
 <form action="supprimer.php" method="post">
 

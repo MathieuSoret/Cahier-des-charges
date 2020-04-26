@@ -337,7 +337,7 @@ if(isset($_POST['formmodifierL']))
 					<label for="description">Description Livre:</label>
 				</td>
 				<td>
-					<input type="text" placeholder="Description du ivre" id="description" name="description"/>
+					<input type="text" placeholder="Description du livre" id="description" name="description"/>
 				</td>
 		
 			</tr>
@@ -346,28 +346,31 @@ if(isset($_POST['formmodifierL']))
 					<label for="description2">Nouveau Description du Livre:</label>
 				</td>
 				<td>
-					<input type="text" placeholder="Description du ivre" id="description2" name="description2"/>
+					<input type="text" placeholder="Description du livre" id="description2" name="description2"/>
 				</td>
 		
 			</tr>
 			
 			
 			
-		</table>
+	</table>
+
+
+
+		<br>
+		<input type="submit" name="formmodifierL" value="Modifier le livre"/>
+
+		<a href="admin.php"><input type="submit" name="formretour" value="Retour à la page admin"/></a>
 
 </form>
 
-<br>
-<input type="submit" name="formmodifierL" value="Modifier le livre"/>
-<a href="admin.php"><input type="submit" name="formretour" value="Retour à la page admin"/></a>
+	<?php
+	if(isset($erreur))
+	{
+		echo '<font color="red">'.$erreur."</font>";
+	}
 
-<?php
-if(isset($erreur))
-{
-	echo '<font color="red">'.$erreur."</font>";
-}
-
-?>
+	?>
 
 
 

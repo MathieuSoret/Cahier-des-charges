@@ -26,7 +26,7 @@ if (isset($_GET['recherche']))
 	if(!empty($_GET['q'])) 
 	{
 		
-
+		// Permet de chercher les livre qui sont dans la base de données
 		$livre = $pdo->prepare('SELECT * FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre DESC');
         $livre->execute(array("%".$_GET['q']."%"));
 		$donnees = $livre->fetch();
@@ -81,7 +81,7 @@ if (isset($_GET['recherche']))
 
 
 
-			
+		<!-- Ici nous avons la barre de recherche -->
 		<form method="GET" action="recherche.php">
 		
 			<div class="recherche" >

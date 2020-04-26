@@ -128,13 +128,14 @@ if (isset($_GET['recherche']))
 		
 	 <?php if(!empty($_GET['q'])) 
 		{
+		//cherche les livres qui éxistes dans la base de donnée
 		$stmt = $pdo->prepare('SELECT * FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre ASC');
 		$stmt->execute(['%' . $_GET['q'] . '%']);
 		if ($livre = $stmt->fetch())
 		{	
 	
 			do 
-			{ 
+			{ //Cela me permet d'afficher plusieurs livre selon le livre recherché
 				
 				?>
 					
@@ -150,7 +151,7 @@ if (isset($_GET['recherche']))
 										
 											<div class="input-group mb-3">
 											
-												<label for="site-search">Nom du Livre: <?php echo htmlspecialchars($livre['nomLivre']); ?>
+												<label for="site-search">Nom du Livre: <?php echo htmlspecialchars($livre['nomLivre']); //Affiche le livre recherché?>
 												
 													<div class="d-flex justify-content-center mt-3 login_container"> 
 													<br>
@@ -162,6 +163,7 @@ if (isset($_GET['recherche']))
 															
 															if (isset($_GET['button']))
 																{
+																	
 																	$res = $pdo->prepare ('SELECT * FROM livre descriptionLivre LIKE nomLivre ');
 																	$res->execute(array($_GET['button']));
 																	$donnees = $res->fetch();
@@ -217,15 +219,11 @@ if (isset($_GET['recherche']))
 				<?php
 			} 
 				while ($livre = $stmt->fetch());
-					 
-							
-											
-						
-					
-						
+				
+			
 		} 
 	else 
-	{
+	{ //M'affiche un message d'erreur lorsque le livre n'est pas dans la base de donnée.
 		
 	?>
 	

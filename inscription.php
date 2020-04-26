@@ -1,12 +1,12 @@
 <?php
 	
-		
+	
 if(isset($_POST['forminscription']))
 {
 	$pseudo = $_POST['pseudo'];
 	$pass = $_POST['pass'];
 	
-	
+	//Pemet de se connecter à la base de donnée.
 	$dsn = "mysql:host=localhost;charset=utf8;dbname=veretz";
 	$user = "root";
 	$passwd = "";
@@ -16,16 +16,16 @@ if(isset($_POST['forminscription']))
 	
 	
 		
-		
+	// Vérifie si tous les champs ont été remplit.
 	if(!empty($_POST['pseudo']) AND !empty($_POST['pass']) )
 	{
-		
+			//Vérifie si le pseudo éxiste déjà ou pas.
 			$req = $pdo->prepare('SELECT * FROM compte WHERE pseudoCompte = ?');
 			$req->execute(array($_POST['pseudo']));
 			$donnees = $req->fetch();
 			if (empty($donnees['pseudoCompte'])) 
 			{
-				
+				//Ajoute les identifiants grâce aux "INSERT INTO" et "VALUES".
 				$stm = $pdo->prepare("INSERT INTO compte(pseudoCompte, mpCompte) VALUES(:pseudo, :pass)");
 				$pass = password_hash($pass, PASSWORD_DEFAULT);
 				$stm->execute(array(
@@ -100,6 +100,7 @@ if(isset($_POST['forminscription']))
 <h2>Page d'inscription</h2>
 <br><br>
 
+<!-- Il s'agit du formulaire d'inscription -->
 <form action="inscription.php" method="post">
 
 	<table>
@@ -133,7 +134,9 @@ if(isset($_POST['forminscription']))
 	
 	
 </form>
-	
+
+<!-- Permet de disegner les messages  -->
+
 <?php
 
 if(isset($erreur))

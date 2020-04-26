@@ -2,35 +2,39 @@
 
 session_start();
 
+// Permet de se connecter à la base de données.
 $pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=veretz', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
+//permet de savoir si on appuye sur le bouton qui s'appelle "formconnection".
 if(isset($_POST['formconnexion']))
 {	
+	//Cherche les informations de la table compte.
 	$reponse = $pdo->query('SELECT * FROM compte');
 	$donnees = $reponse->fetch();
-	
+	//Je défini mes variables.
 	$pseudo = $_POST['pseudo'];
 	$pass = $_POST['pass'];
 	
 	
-		
+	//Permet de vérifier si tous les champs sont remplis.
 	if(!empty($_POST['pseudo']) AND !empty($_POST['pass']))
 	{
+		//Si c'est le cas, il recherche si le pseudo existe et si il existe il passe au "if" suivant.
 		$req = $pdo->prepare('SELECT * FROM compte WHERE pseudoCompte = ?');
 		$req->execute(array($_POST['pseudo']));
 		$donnees = $req->fetch();
 		
+		//ici on gère le compte de l'admin car il a un nom de compte spécifique.
 		if(!empty($donnees['pseudoCompte'] == 'admin'))
 		{
-			
+			//Il cherche si le mot de passe
 			$req = $pdo->prepare('SELECT * FROM compte WHERE mpCompte = ?');
 			$req->execute(array($_POST['pass']));
 			$donnees = $req->fetch();
 			
 			
-			
+			//et si le mot de passe et le même que celui donné et bien il peut accéder à ca page.
 			if (!empty($donnees['mpCompte']== '$2y$10$V3lb3C8NFxeSoyjOWVzVK.IEjMm2lNmPBnOboAk.VQzlim00DwtbG'))
 			{
 				
@@ -45,6 +49,7 @@ if(isset($_POST['formconnexion']))
 			}
 		}
 		
+		//Il s'agit de faire maintenant la même chose sans les conditions de l'admin.
 		elseif(!empty($donnees['pseudoCompte']))
 		{
 			$req = $pdo->prepare('SELECT * FROM compte WHERE mpCompte = ?');
@@ -88,6 +93,7 @@ if(isset($_POST['formconnexion']))
 <html>
 <head>
 	<meta charset="utf-8" />
+	<!-- Ici on va pouvoir accéder à nos fichier css -->
 	<link rel="stylesheet" href="petite_resolution.css" />
 	<link rel="stylesheet" href="css/css.css" />
     <title>Bibliothéque de Veretz</title>
@@ -104,7 +110,9 @@ q : s
 	<a href="https://www.veretz.com/"><img src="image/logo.png" class="brand_logo" alt="Logo"></a>
 </div>
 
-
+<!-- 
+	Il s'agit de notre design pour la page de connection.
+-->
 	
 	<form method="POST" action="">	
 		
@@ -142,12 +150,7 @@ q : s
 						</center>		
 								
 							
-								<div class="form-group">
-										<div class="custom-control custom-checkbox">
-											<label class="custom-control-label" for="customControlInline">Se souvenir de moi :</label>
-											<input type="checkbox" class="custom-control-input" id="customControlInline">
-										</div>	
-								</div>
+								<br><br>
 								
 								<input type="submit" name="formconnexion" value="connexion" href="pageacceuil.php"/>
 									
@@ -165,7 +168,7 @@ q : s
 </form>
 </body>	
 <?php
-
+	// Ici il s'agit de l'endroit ou on design nos messages lorsque l'on fait quelque chose.
 	if(isset($erreur))
 	{
 	echo '<font color="red">'.$erreur."</font>";

@@ -6,9 +6,10 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['formsupprimerL']))
 {	
-	
+	//Vérifie si l'ID du livre éxiste 
 	if (!empty($_POST['idL']))
 	{
+		//Supprime le livre grâce à l'ID et à "DELETE".
 		$req2 = $pdo->prepare('DELETE FROM livre WHERE idLivre = ?');
 		$req2->execute(array($_POST['idL']));
 		
@@ -63,6 +64,7 @@ if(isset($_POST['formsupprimerL']))
 <br><br>
 
 
+<!-- il s'agit du formulaire pour supprimer le livre. -->
 <center>
 <form action="supprimerLivre.php" method="post">
 

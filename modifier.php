@@ -2,6 +2,7 @@
 
 if(isset($_POST['formmodifier'])) 
 {
+
 	$pseudo = $_POST['pseudo'];
 	$pass = $_POST['pass'];
 	$pseudo2 = $_POST['pseudo2'];
@@ -15,22 +16,24 @@ if(isset($_POST['formmodifier']))
 	$pdo = new PDO($dsn, $user, $passwd);
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+	//Permet de vérifier si tous les champs ont été remplit.
 	if(!empty($_POST['pseudo']) AND !empty($_POST['pass']) AND !empty($_POST['pseudo2']) AND !empty($_POST['pass2']))
 	{
-		
+		//Vérifie si le pseudo éxiste.
 		$req = $pdo->prepare('SELECT * FROM compte WHERE pseudoCompte = ?');
 		$req->execute(array($_POST['pseudo']));
 		$donnees = $req->fetch();
 			
 		if (!empty($donnees['pseudoCompte']))
 		{
-			
+			//vérifie si le mot de passe éxiste.
 			$req = $pdo->prepare('SELECT * FROM compte WHERE mpCompte = ?');
 			$req->execute(array($_POST['pass']));
 			$donnees = $req->fetch();
 			
 			if (!empty($donnees['mpCompte']))
 			{
+				//Et ensuite on modifie grâce à "UPDATE".
 				$requeteupdate = $pdo->prepare('UPDATE compte SET pseudoCompte = "'. $pseudo2 .'" WHERE pseudoCompte = "'. $pseudo .'" ');
 				$requeteupdate->execute(array($_POST['pseudo2'] ) );
 			
@@ -105,6 +108,7 @@ if(isset($_POST['formmodifier']))
 <h2>Page de modification d'un compte</h2>
 <br><br>
 
+<!-- Il s'agit du formulaire  -->
 <form action="modifier.php" method="post">
 
 			<table>
@@ -147,6 +151,7 @@ if(isset($_POST['formmodifier']))
 				</tr>
 				
 			</table>
+
 			<br>
 			<input type="submit" name="formmodifier" value="Je modifie ce compte"/>
 	

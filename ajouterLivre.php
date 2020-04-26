@@ -1,7 +1,9 @@
 <?php
 
+// Permet de vérifier si on appuie sur le bouton de nom "formajouter".
 if(isset($_POST['formajouter']))
 {
+	// Ici nous avons toutes nos variables.
 	$nom = $_POST['nom'];
 	$auteur = $_POST['auteur'];
 	$edition = $_POST['edition'];
@@ -11,6 +13,7 @@ if(isset($_POST['formajouter']))
 	$description = $_POST['description'];
 	$nombre = $_POST['nombre'];
 	
+	//Permet d'accéder à notre base de donnée.
 	$dsn = "mysql:host=localhost;charset=utf8;dbname=veretz";
 	$user = "root";
 	$passwd = "";
@@ -20,16 +23,16 @@ if(isset($_POST['formajouter']))
 	
 	
 	
-	
+	//permet de vérifier si tous les champs sont remplis.
 	if(!empty($_POST['nom']) AND !empty($_POST['auteur']) AND !empty($_POST['edition']) AND !empty($_POST['genre']) AND !empty($_POST['etat']) AND !empty($_POST['Date']) AND !empty($_POST['description'])AND !empty($_POST['nombre']))
 	{
-
+		//ici on vérifie juste si le livre éxiste ou non dans la base de donnée.
 		$req = $pdo->prepare('SELECT * FROM livre WHERE nomLivre = ?');
 		$req->execute(array($_POST['nom']));
 		$donnees = $req->fetch();
 		if (empty($donnees['nomLivre'])) 
 		{
-			
+			//Ici on gére l'ajout du livre grâce à la formule "INSERT" et "VALUES".
 			$stm = $pdo->prepare("INSERT INTO livre(nomLivre, auteurLivre, editionLivre,genreLivre,etatLivre, datepremiereditionLivre, descriptionLivre, nbLivre) VALUES(:nom, :auteur, :edition, :genre, :etat, :Date, :description, :nombre)");
 			$stm->execute(array(
 			':nom' => $nom, 
@@ -102,7 +105,7 @@ if(isset($_POST['formajouter']))
 <h2>Ajouter un livre</h2>
 <br><br>
 
-
+<!-- Dans ce form nous avons toute les zones de textes qui vont nous premettre d'ajouter un livre-->
 <form action="ajouterLivre.php" method="post">
 <table>
 		<tr>
@@ -190,6 +193,7 @@ if(isset($_POST['formajouter']))
 	
 
 <br>
+<!-- Ici il s'agit des différents boutons qui vont permettre d'enregistrer et de retourner à la page de base de l'admin. -->
 <input type="submit" name="formajouter" value="J'ajoute se livre à la bibliothèque"/>
 </form>
 <br>
