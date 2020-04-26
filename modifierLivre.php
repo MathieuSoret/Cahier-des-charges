@@ -49,9 +49,9 @@ if(isset($_POST['formmodifierL']))
 			if (!empty($donnees['auteurLivre']))
 			{
 			
-				$req = $pdo->prepare('SELECT * FROM livre WHERE editionLivreLivre = ?');
+				$req = $pdo->prepare('SELECT * FROM livre WHERE editionLivre = ?');
 				$req->execute(array($_POST['edition']));
-				$donnees = $req2->fetch();
+				$donnees = $req->fetch();
 				
 				if (!empty($donnees['editionLivre']))
 				{
@@ -360,10 +360,10 @@ if(isset($_POST['formmodifierL']))
 		<br>
 		<input type="submit" name="formmodifierL" value="Modifier le livre"/>
 
-		<a href="admin.php"><input type="submit" name="formretour" value="Retour à la page admin"/></a>
+		
 
 </form>
-
+<a href="admin.php"><input type="submit" name="formretour" value="Retour à la page admin"/></a>
 	<?php
 	if(isset($erreur))
 	{
