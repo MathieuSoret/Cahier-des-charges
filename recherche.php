@@ -117,10 +117,10 @@ if (isset($_SESSION['pseudoCompte']))
 		</div>
 
 		<center>
-		
-		
-		
-		
+	
+	
+	
+
 <?php 
 if (isset($_GET['recherche']))
 {
@@ -166,18 +166,25 @@ if (isset($_GET['recherche']))
 															?>
 															<br><br>
 															
+															
+																
+															<form action="resulivre.php" method="GET">
+																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>													
+															</form>	
+															
 															<?php  //Gérer les emprunts
 																
-																if (isset($_POST['buttonE']))
+																if (isset($_GET['buttonE']))
 																{
-																	$emp = $pdo -> prepare ('SELECT * FROM livre WHERE nbLivre ?');
+																	
+																	$emp = $pdo -> prepare('SELECT * FROM livre WHERE nbLivre = ? AND nomLivre = '.$livre['nomLivre'].' ');
 																	$emp->execute(array($_POST['buttonE']));
-																	$empL = $emp->fetch();
+																	$res = $emp->fetch();
 																	
 																	
-																	if($empL > 0)
+																	if($res > 0)
 																	{
-																		$empL--;
+																		$res--;
 																		$erreur = "Ce livre à bien était emprunté !";
 																	}
 																	else
@@ -187,10 +194,6 @@ if (isset($_GET['recherche']))
 																}
 																
 															?>
-																
-															<form action="resulivre.php">
-																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>													
-															</form>	
 															
 														</form>
 														

@@ -58,6 +58,7 @@ if(isset($_POST['formconnexion']))
 			
 			if(!empty($donnees['mpCompte']))
 			{
+				//ici nous avons la session qui va démarrer et le nom de la session correspond au pseudo de la personne connecté
 				session_start();
 				$_SESSION['pseudoCompte'] = $donnees['pseudoCompte'];
 				
