@@ -159,28 +159,21 @@ if (isset($_GET['recherche']))
 														
 															<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
 															
-															<?php 
+															<?php //Pour afficher la description du livre recherché
 															
-															if (isset($_GET['button']))
-																{
-																	
-																	$res = $pdo->prepare ('SELECT * FROM livre descriptionLivre LIKE nomLivre ');
-																	$res->execute(array($_GET['button']));
-																	$donnees = $res->fetch();
-																}
+															
 															
 															?>
 															<br><br>
-															<form action="resulivre.php">
-																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>	
-													
-																<?php  //Gérer les emprunts
+															
+															<?php  //Gérer les emprunts
 																
 																if (isset($_POST['buttonE']))
 																{
-																	$emp = $pdo -> prepare ('SELECT * FROM livre WHERE nbLivre = ? AND nomLivre = ?');
-																	$emp->execute();
+																	$emp = $pdo -> prepare ('SELECT * FROM livre WHERE nbLivre ?');
+																	$emp->execute(array($_POST['buttonE']));
 																	$empL = $emp->fetch();
+																	
 																	
 																	if($empL > 0)
 																	{
@@ -193,8 +186,10 @@ if (isset($_GET['recherche']))
 																	}
 																}
 																
-																?>
+															?>
 																
+															<form action="resulivre.php">
+																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>													
 															</form>	
 															
 														</form>
