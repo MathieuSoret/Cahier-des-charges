@@ -1,4 +1,7 @@
 <?php
+
+
+
 session_start();
 
 if (isset($_SESSION['pseudoCompte']))
@@ -111,21 +114,24 @@ if (isset($_SESSION['pseudoCompte']))
 											</div>
 											
 											<div class="d-flex justify-content-center mt-3 login_container">
-										
-										
+												
+												
 											<?php  //Lire la description
 											
+												$pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=veretz', 'root', '');
+												$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 												
+											
+											$stmt = $pdo->prepare('SELECT * FROM livre WHERE descriptionLivre LIKE ? ');
+											$stmt->execute(['%']);	
+											$livre = $stmt->fetch();
+											
+											echo $livre['descriptionLivre'];
+											
 											
 											?>
 										
-												
-												
-												
-												
-												
-												
-												
+											
 											</div>
 											
 										</form>

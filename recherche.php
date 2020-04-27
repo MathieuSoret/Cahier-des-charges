@@ -161,13 +161,20 @@ if (isset($_GET['recherche']))
 															
 															<?php //Pour afficher la description du livre recherché
 															
-															
+																if (isset($_GET['button']))
+																	{
+																		
+																		$res = $pdo -> prepare('SELECT * FROM livre WHERE descriptionLivre = ? AND nomLivre = '.$livre['nomLivre'].' ');
+																		$res->execute(array($_GET['button']));
+																		$resL = $res->fetch();
+																	
+																	}
 															
 															?>
 															<br><br>
 															
 															
-																
+															
 															<form action="resulivre.php" method="GET">
 																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>													
 															</form>	
@@ -182,7 +189,7 @@ if (isset($_GET['recherche']))
 																	$res = $emp->fetch();
 																	
 																	
-																	if($res > 0)
+																	if($res->rowCount() > 0)
 																	{
 																		$res--;
 																		$erreur = "Ce livre à bien était emprunté !";
