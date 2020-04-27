@@ -159,6 +159,7 @@ if (isset($_GET['recherche']))
 														
 															<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
 															
+														</form>	
 															<?php //Pour afficher la description du livre recherché
 															
 																if (isset($_GET['button']))
@@ -166,7 +167,7 @@ if (isset($_GET['recherche']))
 																		
 																		$res = $pdo -> prepare('SELECT * FROM livre WHERE descriptionLivre = ? AND nomLivre = '.$livre['nomLivre'].' ');
 																		$res->execute(array($_GET['button']));
-																		$resL = $res->fetch();
+																		$livre = $res->fetch();
 																	
 																	}
 															
@@ -202,7 +203,7 @@ if (isset($_GET['recherche']))
 																
 															?>
 															
-														</form>
+														
 														
 														
 													</div>

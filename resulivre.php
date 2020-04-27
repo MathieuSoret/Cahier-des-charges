@@ -120,15 +120,18 @@ if (isset($_SESSION['pseudoCompte']))
 											
 												$pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=veretz', 'root', '');
 												$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+													
 												
-											
-											$stmt = $pdo->prepare('SELECT * FROM livre WHERE descriptionLivre LIKE ? ');
-											$stmt->execute(['%']);	
-											$livre = $stmt->fetch();
-											
-											echo $livre['descriptionLivre'];
-											
-											
+												$stmt = $pdo->prepare('SELECT * FROM livre ORDER BY idLivre ASC');
+												$stmt->execute(['%']);	
+												$livre = $stmt->fetch();
+												
+												echo $livre['nomLivre'];
+												?>
+												<br><br>
+												<?php
+												echo $livre['descriptionLivre'];
+												
 											?>
 										
 											
