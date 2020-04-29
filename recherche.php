@@ -164,11 +164,11 @@ if (isset($_GET['recherche']))
 															
 																if (isset($_GET['button']))
 																	{
-																		
-																		$res = $pdo -> prepare('SELECT * FROM livre WHERE descriptionLivre = ? AND nomLivre = '.$livre['nomLivre'].' ');
-																		$res->execute(array($_GET['button']));
-																		$livre = $res->fetch();
-																	
+																
+																	$resumer = $pdo -> prepare('SELECT descriptionLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
+																	$resumer->execute();
+																	$resL = $resumer->fetch();
+																
 																	}
 															
 															?>
@@ -176,23 +176,28 @@ if (isset($_GET['recherche']))
 															
 															
 															
-															<form action="resulivre.php" method="GET">
+															<form method="POST">
 																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>													
-															</form>	
+															</form>
 															
 															<?php  //Gérer les emprunts
 																
-																if (isset($_GET['buttonE']))
+																if (isset($_POST['buttonE']))
 																{
 																	
-																	$emp = $pdo -> prepare('SELECT * FROM livre WHERE nbLivre = ? AND nomLivre = '.$livre['nomLivre'].' ');
-																	$emp->execute(array($_POST['buttonE']));
+																	$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
+																	$emp->execute();
 																	$res = $emp->fetch();
 																	
+																	echo $res[0];
 																	
-																	if($res->rowCount() > 0)
+																	if($res[0]>0)
 																	{
-																		$res--;
+																		$res[0]--;
+																		$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$res[0].'" AND nomLivre = "' . $livre['nomLivre'] . '"');
+																		$emprunt->execute(array($res[0]));
+																		
+																		
 																		$erreur = "Ce livre à bien était emprunté !";
 																	}
 																	else

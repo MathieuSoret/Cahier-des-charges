@@ -118,19 +118,7 @@ if (isset($_SESSION['pseudoCompte']))
 												
 											<?php  //Lire la description
 											
-												$pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=veretz', 'root', '');
-												$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-													
-												
-												$stmt = $pdo->prepare('SELECT * FROM livre ORDER BY idLivre ASC');
-												$stmt->execute(['%']);	
-												$livre = $stmt->fetch();
-												
-												echo $livre['nomLivre'];
-												?>
-												<br><br>
-												<?php
-												echo $livre['descriptionLivre'];
+												echo $resL[0];
 												
 											?>
 										
