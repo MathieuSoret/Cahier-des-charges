@@ -43,6 +43,9 @@
 <a href="modifier.php"><input type="submit" name="formmodifier" value="Modifier un compte"/></a>
 
 <br><br><br>
+<a href="rendre.php"><input type="submit" name="formrendre" value="Rendre un livre"/></a>
+
+<br><br><br>
 <a href="Acceuil.php"><input type="submit" name="formRetour" value="Retourner à la page d'acceuil"/></a>
 
 </center>

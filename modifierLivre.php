@@ -32,9 +32,10 @@ if(isset($_POST['formmodifierL']))
 	$pdo = new PDO($dsn, $user, $passwd);
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+// Ici nous vérifions si tous les champs sont remplits.
 	if(!empty($_POST['nom']) AND !empty($_POST['auteur']) AND !empty($_POST['edition']) AND !empty($_POST['genre']) AND !empty($_POST['etat']) AND !empty($_POST['Date']) AND !empty($_POST['description'])            AND !empty($_POST['nom2']) AND !empty($_POST['auteur2']) AND !empty($_POST['edition2']) AND !empty($_POST['genre2']) AND !empty($_POST['etat2']) AND !empty($_POST['Date2']) AND !empty($_POST['description2']) )
 	{
-		
+		// A chaque vérification nous regardons si le texte rentré existe dans las base de données ou non.
 		$req = $pdo->prepare('SELECT * FROM livre WHERE nomLivre = ?');
 		$req->execute(array($_POST['nom']));
 		$donnees = $req->fetch();
@@ -84,7 +85,7 @@ if(isset($_POST['formmodifierL']))
 				
 									if (!empty($donnees['descriptionLivre']))
 									{
-										
+										// Ici nous modifions les valeurs par celle que l'on a rentré au préalable.
 										$requeteupdate = $pdo->prepare('UPDATE livre SET nomLivre = "'. $nom2 .'" WHERE nomLivre = "'. $nom .'" ');
 										$requeteupdate->execute(array($_POST['nom2'] ) );
 									

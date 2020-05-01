@@ -1,5 +1,8 @@
 <?php
 
+$Debug = true;
+require("./debug.php");
+
 $pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=veretz', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -155,57 +158,69 @@ if (isset($_GET['recherche']))
 												
 													<div class="d-flex justify-content-center mt-3 login_container"> 
 													<br>
-														<form action="resulivre.php" method="GET">
+														<form action="resulivre.php" method="POST">
 														
 															<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
 															
 														</form>	
 															<?php //Pour afficher la description du livre recherché
 															
-																if (isset($_GET['button']))
-																	{
+																
 																
 																	$resumer = $pdo -> prepare('SELECT descriptionLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
 																	$resumer->execute();
 																	$resL = $resumer->fetch();
 																
-																	}
+																	
 															
 															?>
 															<br><br>
 															
 															
 															
-															<form method="POST">
+															<form method="GET">
 																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>													
 															</form>
 															
 															<?php  //Gérer les emprunts
 																
-																if (isset($_POST['buttonE']))
-																{
-																	
-																	$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
-																	$emp->execute();
-																	$res = $emp->fetch();
-																	
-																	echo $res[0];
-																	
-																	if($res[0]>0)
-																	{
-																		$res[0]--;
-																		$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$res[0].'" AND nomLivre = "' . $livre['nomLivre'] . '"');
-																		$emprunt->execute(array($res[0]));
-																		
-																		
-																		$erreur = "Ce livre à bien était emprunté !";
-																	}
-																	else
-																	{
-																		$erreur = "Nous n'avons plus se livre en stock !";
-																	}
-																}
 																
+															function debugPrintVariableGET()
+															{
+																global $Debug;
+																if ($Debug)
+																{
+																	debugPrintVariable("_GET");
+																
+															
+																
+																
+																	if (isset($_GET['buttonE']))
+																	{
+																		
+																		$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
+																		$emp->execute(array($_POST['buttonE']));
+																		$res = $emp->fetch();
+																		
+																		echo $res[0];
+																		
+																		if($res[0]>0)
+																		{
+																			$res[0]--;
+																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$res[0].'" AND nomLivre = "' . $livre['nomLivre'] . '"');
+																			$emprunt->execute(array($res[0]));
+																			
+																			$erreur = "Ce livre à bien était emprunté !";
+																		}
+																		else
+																		{
+																			$erreur = "Nous n'avons plus se livre en stock !";
+																		}
+																	}
+																	
+																	
+																}
+															}	
 															?>
 															
 														

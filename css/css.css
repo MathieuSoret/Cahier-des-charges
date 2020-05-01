@@ -1,4 +1,14 @@
+div.debug {
+	background:lightgreen;
+	border-style:dotted;
+	border-color:blue;
+	border-width:1px 1px 1px 1px;
+}	
 
+div.debug em {
+	font-weight: bold;
+	font-style: normal;
+}
 
 
 		body,

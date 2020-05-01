@@ -1,4 +1,7 @@
 <?php
+
+include("debug.php");
+
 session_start();
 
 if (isset($_SESSION['pseudoCompte']))

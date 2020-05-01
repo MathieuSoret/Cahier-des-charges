@@ -1,6 +1,10 @@
 <?php
 
+$Debug = true;
+require("./debug.php");
 
+$pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=veretz', 'root', '');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 session_start();
 
@@ -118,8 +122,20 @@ if (isset($_SESSION['pseudoCompte']))
 												
 											<?php  //Lire la description
 											
-												echo $resL[0];
-												
+											
+													$stmt = $pdo->prepare('SELECT descriptionLivre FROM livre WHERE nomLivre ');
+													$stmt->execute(['%']);
+													if ($livre = $stmt->fetch())
+													{
+														$resu = $pdo->query('SELECT descriptionLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
+														
+														while($data = $resu->fetch(PDO::FETCH_ASSOC))
+														{
+															echo $data['descriptionLivre']. '<br />';
+														}
+													}
+											
+											
 											?>
 										
 											
