@@ -117,7 +117,7 @@ if(isset($_POST['formmodifierL']))
 										$erreur = "C'est bon, le compte à bien était modifier !";
 									}
 									else
-									{
+									{	// Ici nous avons les messages d'erreur si jamais un élément n'est pas bon.
 										$erreur = "Ce n'est pas la bonne description !";
 									}
 								
@@ -207,6 +207,7 @@ if(isset($_POST['formmodifierL']))
 <h2>Modifier un livre</h2>
 <br><br>
 
+<!-- Ici nous avons un tableau qui va permettre de remplir les infomations des livres à modifier -->
 <form action="modifierLivre.php" method="post">
 
 	<table>

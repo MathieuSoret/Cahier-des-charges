@@ -114,7 +114,7 @@ if (isset($_SESSION['pseudoCompte']))
 		<div class="texteclassement">
 
 			<div style="margin-top: 200px;"><font size="12">
-			Information trouvé grâce au mot  : " <?php if ($donnees = $_GET['q']){echo $donnees;} else	{$erreur = "Ce livre n'éxiste pas dans la bibliothèque !";}?> "
+			Information trouvé grâce au mot  : " <?php if ($donnees = $_GET['q']){echo $donnees;} else	{$erreur = "Ce livre n'éxiste pas dans la bibliothèque !";} //Ici nous affichons le resultat de la recherche?> "
 			</font></div>
 
 		</div>
@@ -184,7 +184,7 @@ if (isset($_GET['recherche']))
 															
 															<?php  //Gérer les emprunts
 																
-																
+															// Cette fonction peut me permettre de voir si il y a des bug
 															function debugPrintVariableGET()
 															{
 																global $Debug;
@@ -197,7 +197,7 @@ if (isset($_GET['recherche']))
 																
 																	if (isset($_GET['buttonE']))
 																	{
-																		
+																		// Ici nous cherchons les informations avec le nom du livre.
 																		$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
 																		$emp->execute(array($_POST['buttonE']));
 																		$res = $emp->fetch();
@@ -206,7 +206,9 @@ if (isset($_GET['recherche']))
 																		
 																		if($res[0]>0)
 																		{
+																			// Ici on désincrémente la variable res
 																			$res[0]--;
+																			// Ici nous modifions les valeurs en fonction des valeurs utilisée
 																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$res[0].'" AND nomLivre = "' . $livre['nomLivre'] . '"');
 																			$emprunt->execute(array($res[0]));
 																			
