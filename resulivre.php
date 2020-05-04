@@ -126,7 +126,7 @@ if (isset($_SESSION['pseudoCompte']))
 													//J' avais pensé à faire ca mais cela ne marche pas car il ne retrouve pas la variable $livre de la page recherche et je ne sais pas comment lui communiquer l'information.
 													//$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
 													
-													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre FROM livre ');
+													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre ');
 													$resL->execute();
 													while($data = $resL->fetch(PDO::FETCH_ASSOC))
 														// Et la je veux récuperer la description du livre
@@ -136,7 +136,8 @@ if (isset($_SESSION['pseudoCompte']))
 															// Ici je veux l'afficher et actuelement
 															
 															
-															echo $data['nomLivre']; ?> <br><br>
+															echo 'Nom du Livre : '.$data['nomLivre']; ?><br>
+															<?php echo 'Auteur du livre : '.$data['auteurLivre']?> <br><br>
 															<?php echo $data['descriptionLivre'];?>
 															<br><br>
 															<?php
