@@ -166,7 +166,7 @@ if (isset($_GET['recherche']))
 															<?php //Pour afficher la description du livre recherché
 															
 																
-																
+																	//Ici je voudrais prendre l'information de $livre['nomLivre'] de la ligne 157 pour pouvoir transmettre l'information à la page resulivre pour pouvoir afficher la description du livre en question.
 																	$resumer = $pdo -> prepare('SELECT descriptionLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
 																	$resumer->execute();
 																	$resL = $resumer->fetch();
@@ -184,7 +184,7 @@ if (isset($_GET['recherche']))
 															
 															<?php  //Gérer les emprunts
 																
-															// Cette fonction peut me permettre de voir si il y a des bug
+															// Cette fonction peut me permettre de voir si il y a des bugs mais je ne sais pas si ca marche comme ca !!!! Et je n'ai toujours pas trouvé le problème pour le bouton
 															function debugPrintVariablePOST(){
 															global $Debug;
 															if ($Debug)

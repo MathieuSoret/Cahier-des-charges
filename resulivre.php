@@ -92,7 +92,7 @@ if (isset($_SESSION['pseudoCompte']))
 				<div style="margin-top: 150px;"><font size="10">
 				Résumé du Livre : 
 				</font></div>
-
+				<br><br>
 				</div>
 
 				<center>
@@ -121,19 +121,28 @@ if (isset($_SESSION['pseudoCompte']))
 												
 												
 											<?php  //Lire la description
-											
-											
-													$stmt = $pdo->prepare('SELECT descriptionLivre FROM livre WHERE nomLivre ');
-													$stmt->execute(['%']);
-													if ($livre = $stmt->fetch())
-													{
-														$resu = $pdo->query('SELECT descriptionLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
+											// Ici j'ai essayé de récupérer les informations du livre rechercher
+													
+													//J' avais pensé à faire ca mais cela ne marche pas car il ne retrouve pas la variable $livre de la page recherche et je ne sais pas comment lui communiquer l'information.
+													//$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
+													
+													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre FROM livre ');
+													$resL->execute();
+													while($data = $resL->fetch(PDO::FETCH_ASSOC))
+														// Et la je veux récuperer la description du livre
 														
-														while($data = $resu->fetch(PDO::FETCH_ASSOC))
+														
 														{
-															echo $data['descriptionLivre']. '<br />';
+															// Ici je veux l'afficher et actuelement
+															
+															
+															echo $data['nomLivre']; ?> <br><br>
+															<?php echo $data['descriptionLivre'];?>
+															<br><br>
+															<?php
 														}
-													}
+													
+													
 											
 											
 											?>
