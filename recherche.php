@@ -1,7 +1,7 @@
 <?php
 
 $Debug = true;
-require("./debug.php");
+
 
 $pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=veretz', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -178,28 +178,25 @@ if (isset($_GET['recherche']))
 															
 															
 															
-															<form method="GET">
+															<form method="POST" action="recherche.php">
 																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>													
 															</form>
 															
 															<?php  //Gérer les emprunts
 																
 															// Cette fonction peut me permettre de voir si il y a des bug
-															function debugPrintVariableGET()
-															{
-																global $Debug;
-																if ($Debug)
+															function debugPrintVariablePOST(){
+															global $Debug;
+															if ($Debug)
 																{
-																	debugPrintVariable("_GET");
-																
+																	debugPrintVariable("_POST");
 															
 																
-																
-																	if (isset($_GET['buttonE']))
+																	if (isset($_POST['buttonE']))
 																	{
 																		// Ici nous cherchons les informations avec le nom du livre.
 																		$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
-																		$emp->execute(array($_POST['buttonE']));
+																		$emp->execute(array($livre['nomLivre']));
 																		$res = $emp->fetch();
 																		
 																		echo $res[0];
@@ -222,7 +219,8 @@ if (isset($_GET['recherche']))
 																	
 																	
 																}
-															}	
+															}
+																
 															?>
 															
 														
