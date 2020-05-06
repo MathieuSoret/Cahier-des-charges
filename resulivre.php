@@ -63,6 +63,21 @@ if (isset($_SESSION['pseudoCompte']))
 				</div>
 				
 		</header>
+		
+		
+		<form method="GET" action="recherche.php">
+		
+			<div class="recherche" >
+
+				<label for="site-search">Nom du livre à rechercher : </label>
+				<input type="search" name="q" placeholder="Nom livre ..."/>
+				<input type="submit" value="Valider" name="recherche"/>
+				
+				
+
+			</div>
+			
+		</form>
 
 
 				<div class="iconjeu">
@@ -126,21 +141,19 @@ if (isset($_SESSION['pseudoCompte']))
 													//J' avais pensé à faire ca mais cela ne marche pas car il ne retrouve pas la variable $livre de la page recherche et je ne sais pas comment lui communiquer l'information.
 													//$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
 													
-													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre ');
+													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre');
 													$resL->execute();
 													while($data = $resL->fetch(PDO::FETCH_ASSOC))
 														// Et la je veux récuperer la description du livre
-														
-														
+													
 														{
-															// Ici je veux l'afficher et actuelement
-															
-															
+															// Ici je veux l'afficher
 															echo 'Nom du Livre : '.$data['nomLivre']; ?><br>
 															<?php echo 'Auteur du livre : '.$data['auteurLivre']?> <br><br>
 															<?php echo $data['descriptionLivre'];?>
 															<br><br>
 															<?php
+															
 														}
 													
 													

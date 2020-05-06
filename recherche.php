@@ -72,7 +72,7 @@ if (isset($_SESSION['pseudoCompte']))
 			
 				<div class="recherche" >
 
-					<label for="site-search">Nom du livre à rechercher:</label>
+					<label for="site-search">Nom du livre à rechercher :</label>
 					<input type="search" name="q" placeholder="Nom livre ..."/>
 					<input type="submit" value="Valider" name="recherche"/>
 										
@@ -165,12 +165,13 @@ if (isset($_GET['recherche']))
 														</form>	
 															<?php //Pour afficher la description du livre recherché
 															
-																
+																if (isset($_POST['button']))
+																	{
 																	//Ici je voudrais prendre l'information de $livre['nomLivre'] de la ligne 157 pour pouvoir transmettre l'information à la page resulivre pour pouvoir afficher la description du livre en question.
-																	$resumer = $pdo -> prepare('SELECT descriptionLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
+																	$resumer = $pdo -> prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
 																	$resumer->execute();
 																	$resL = $resumer->fetch();
-																
+																	}
 																	
 															
 															?>
@@ -185,11 +186,7 @@ if (isset($_GET['recherche']))
 															<?php  //Gérer les emprunts
 																
 															// Cette fonction peut me permettre de voir si il y a des bugs mais je ne sais pas si ca marche comme ca !!!! Et je n'ai toujours pas trouvé le problème pour le bouton
-															function debugPrintVariablePOST(){
-															global $Debug;
-															if ($Debug)
-																{
-																	debugPrintVariable("_POST");
+
 															
 																
 																	if (isset($_POST['buttonE']))
@@ -218,8 +215,8 @@ if (isset($_GET['recherche']))
 																	}
 																	
 																	
-																}
-															}
+																
+															
 																
 															?>
 															
