@@ -137,11 +137,11 @@ if (isset($_SESSION['pseudoCompte']))
 												
 											<?php  //Lire la description
 											// Ici j'ai essayé de récupérer les informations du livre rechercher
-													
+													$info = $_POST['livre'];
 													//J' avais pensé à faire ca mais cela ne marche pas car il ne retrouve pas la variable $livre de la page recherche et je ne sais pas comment lui communiquer l'information.
 													//$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
 													
-													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre');
+													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre WHERE nomLivre = "' . $info . '" ');
 													$resL->execute();
 													while($data = $resL->fetch(PDO::FETCH_ASSOC))
 														// Et la je veux récuperer la description du livre
@@ -153,12 +153,8 @@ if (isset($_SESSION['pseudoCompte']))
 															<?php echo $data['descriptionLivre'];?>
 															<br><br>
 															<?php
-															
 														}
-													
-													
-											
-											
+														
 											?>
 										
 											

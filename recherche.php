@@ -150,7 +150,7 @@ if (isset($_GET['recherche']))
 									
 									<div class="d-flex justify-content-center form_container">
 									
-										<form>
+										
 										
 											<div class="input-group mb-3">
 											
@@ -160,40 +160,40 @@ if (isset($_GET['recherche']))
 													<br>
 														<form action="resulivre.php" method="POST">
 														
-															<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
+															<input type="hidden" name="livre" value="<?php echo htmlspecialchars($livre['nomLivre']); //Affiche le livre recherché?>"/>
+															<input type="submit" name="button" class="btn login_btn" value="Voir la description du livre"> </input>
 															
 														</form>	
 															<?php //Pour afficher la description du livre recherché
 															
 																if (isset($_POST['button']))
-																	{
-																	//Ici je voudrais prendre l'information de $livre['nomLivre'] de la ligne 157 pour pouvoir transmettre l'information à la page resulivre pour pouvoir afficher la description du livre en question.
+																{
+																	
 																	$resumer = $pdo -> prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
 																	$resumer->execute();
 																	$resL = $resumer->fetch();
-																	}
-																	
+																}
+																
 															
 															?>
-															<br><br>
+															<br>
 															
 															
-															
-															<form method="POST" action="recherche.php">
-																<button type="button" name="buttonE"  class="btn login_btn">Emprunter</button>													
+															<form method="POST" >
+																<input type="submit" name="buttonE"  class="btn login_btn" value="emprunter"></input>													
 															</form>
 															
 															<?php  //Gérer les emprunts
 																
-															// Cette fonction peut me permettre de voir si il y a des bugs mais je ne sais pas si ca marche comme ca !!!! Et je n'ai toujours pas trouvé le problème pour le bouton
+															// Je n'ai toujours pas trouvé le problème pour le bouton
 
 															
 																
 																	if (isset($_POST['buttonE']))
 																	{
 																		// Ici nous cherchons les informations avec le nom du livre.
-																		$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
-																		$emp->execute(array($livre['nomLivre']));
+																		$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE idLivre = "' . $livre['idLivre'] . '" ');
+																		$emp->execute();
 																		$res = $emp->fetch();
 																		
 																		echo $res[0];
@@ -201,10 +201,10 @@ if (isset($_GET['recherche']))
 																		if($res[0]>0)
 																		{
 																			// Ici on désincrémente la variable res
-																			$res[0]--;
+																			$emp = $res[0]-1;
 																			// Ici nous modifions les valeurs en fonction des valeurs utilisée
-																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$res[0].'" AND nomLivre = "' . $livre['nomLivre'] . '"');
-																			$emprunt->execute(array($res[0]));
+																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$emp.'" WHERE idLivre = "' . $livre['idLivre'] . '"');
+																			$emprunt->execute();
 																			
 																			$erreur = "Ce livre à bien était emprunté !";
 																		}
@@ -229,7 +229,7 @@ if (isset($_GET['recherche']))
 												
 											</div>		
 											
-										</form>
+										
 										
 									</div>	
 									
