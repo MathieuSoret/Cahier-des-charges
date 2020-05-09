@@ -48,7 +48,7 @@ if(isset($_POST['formajouter']))
 		
 			
 			
-			$erreur ='Bonjour, le livre " ' . $nom .  ' " à bien était enregistrer !';
+			$bon ='Bonjour, le livre " ' . $nom .  ' " à bien était enregistrer !';
 			
 		}
 			
@@ -206,6 +206,12 @@ if(isset($erreur))
 }
 
 ?>
+<?php
+		if(isset($bon))
+		{
+		echo '<font color="green">'.$bon."</font>";
+		}
+	?>
 </div>
 
 

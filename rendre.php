@@ -4,33 +4,30 @@ $pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=veretz', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-if (isset($_GET['formrendre']))
-{
-	if(!empty($_GET['nomL'])) {
-		$stmt = $pdo->prepare('SELECT * FROM livre WHERE nomLivre LIKE ? ORDER BY idLivre DESC');
-		$stmt->execute(['%' . addcslashes($_GET['nomL'], '%_') . '%']);
-		if ($livre = $stmt->fetch()) {
-			
-			$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
-			$emp->execute(array($_POST['buttonE']));
-			$res = $emp->fetch();
-																			
-			echo $res[0];
-			
-			do {
-				
-				$res[0]++;
-				$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$res[0].'" AND nomLivre = "' . $livre['nomLivre'] . '"');
-				$emprunt->execute(array($res[0]));
-				
-				echo 'Le livre ';
-				echo htmlspecialchars($livre['nomLivre']);
-				echo ' a bien été rendu';
-				
-			} while ($livre = $stmt->fetch());
-		} else {
-			echo "Le livre n'existe pas ";
-		}
+if (isset($_POST['rendre']))
+	{
+	
+	$livre = $_POST['nomL'];
+	
+		
+	// Ici nous cherchons les informations avec le nom du livre.
+	$rendreL = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' . $livre . '" ');
+	$rendreL->execute();
+	$res = $rendreL->fetch();
+	
+	if($res[0]>0)
+	{
+	// Ici on désincrémente la variable res
+	$rendreL = $res[0]+1;
+	// Ici nous modifions les valeurs en fonction des valeurs utilisée
+	$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$rendreL.'" WHERE nomLivre = "' . $livre . '"');
+	$emprunt->execute();
+		
+	$bon = "Ce livre à bien était rendu !";
+	}
+	else
+	{
+		$erreur = "Nous n'avons plus se livre en stock !";
 	}
 }	
 
@@ -95,7 +92,10 @@ if (isset($_GET['formrendre']))
 		
 	</table>
 	<br>
-	<input type="submit" name="formrendre" value="Je rend ce livre"/>
+	
+		<form method="POST" >
+			<input type="submit" name="rendre"  value="Je rend se livre"></input>													
+		</form>
 	
 	
 	<a href="admin.php"><input type="button" value="Retour à la page d'admin"/></a>
@@ -110,7 +110,12 @@ if(isset($erreur))
 
 ?>
 
-
+<?php
+		if(isset($bon))
+		{
+		echo '<font color="green">'.$bon."</font>";
+		}
+	?>
 
 
 </body>

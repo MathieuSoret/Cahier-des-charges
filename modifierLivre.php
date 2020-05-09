@@ -114,7 +114,7 @@ if(isset($_POST['formmodifierL']))
 										$requeteupdate->execute(array($_POST['description2'] ) );
 										
 										
-										$erreur = "C'est bon, le compte à bien était modifier !";
+										$bon = "C'est bon, le compte à bien était modifier !";
 									}
 									else
 									{	// Ici nous avons les messages d'erreur si jamais un élément n'est pas bon.
@@ -373,7 +373,12 @@ if(isset($_POST['formmodifierL']))
 	}
 
 	?>
-
+<?php
+		if(isset($bon))
+		{
+		echo '<font color="green">'.$bon."</font>";
+		}
+	?>
 
 
 

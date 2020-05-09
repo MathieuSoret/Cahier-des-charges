@@ -41,7 +41,7 @@ if(isset($_POST['formmodifier']))
 				$requeteupdate = $pdo->prepare('UPDATE compte SET mpCompte = "'. $pass2 .'" WHERE mpCompte =  "'. $pass .'" ');
 				$requeteupdate->execute(array($_POST['pass2'] ) );
 				
-				$erreur = "C'est bon, le compte à bien était modifier !";
+				$bon = "C'est bon, le compte à bien était modifier !";
 			}
 			else
 			{
@@ -170,6 +170,12 @@ if(isset($erreur))
 
 
 ?>
+<?php
+		if(isset($bon))
+		{
+		echo '<font color="green">'.$bon."</font>";
+		}
+	?>
 
 </div>	
 

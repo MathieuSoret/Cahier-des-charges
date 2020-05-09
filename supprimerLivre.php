@@ -13,7 +13,7 @@ if(isset($_POST['formsupprimerL']))
 		$req2 = $pdo->prepare('DELETE FROM livre WHERE idLivre = ?');
 		$req2->execute(array($_POST['idL']));
 		
-		$erreur = "Le compte à bien était supprimé !";
+		$bon = "Le compte à bien était supprimé !";
 	}
 	else
 	{
@@ -97,7 +97,12 @@ if(isset($erreur))
 
 ?>
 
-
+<?php
+		if(isset($bon))
+		{
+		echo '<font color="green">'.$bon."</font>";
+		}
+	?>
 
 
 </body>

@@ -160,7 +160,7 @@ if (isset($_GET['recherche']))
 													<br>
 														<form action="resulivre.php" method="POST">
 														
-															<input type="hidden" name="livre" value="<?php echo htmlspecialchars($livre['nomLivre']); //Affiche le livre recherché?>"/>
+															<input type="hidden" name="livre" value="<?php echo htmlspecialchars($livre['nomLivre']); //Permet d'envoyer la valeur sur la page resulivre.php ?>"/>
 															<input type="submit" name="button" class="btn login_btn" value="Voir la description du livre"> </input>
 															
 														</form>	
@@ -187,8 +187,6 @@ if (isset($_GET['recherche']))
 																
 															// Je n'ai toujours pas trouvé le problème pour le bouton
 
-															
-																
 																	if (isset($_POST['buttonE']))
 																	{
 																		// Ici nous cherchons les informations avec le nom du livre.
@@ -206,7 +204,7 @@ if (isset($_GET['recherche']))
 																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$emp.'" WHERE idLivre = "' . $livre['idLivre'] . '"');
 																			$emprunt->execute();
 																			
-																			$erreur = "Ce livre à bien était emprunté !";
+																			$bon = "Ce livre à bien était emprunté !";
 																		}
 																		else
 																		{
@@ -214,10 +212,6 @@ if (isset($_GET['recherche']))
 																		}
 																	}
 																	
-																	
-																
-															
-																
 															?>
 															
 														
@@ -296,8 +290,13 @@ if (isset($_GET['recherche']))
 	echo '<font color="red">'.$erreur."</font>";
 	}
 	?>
-																	
-									
+	<?php
+		if(isset($bon))
+		{
+		echo '<font color="green">'.$bon."</font>";
+		}
+	?>																
+
 			
 <?php
 			

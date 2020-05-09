@@ -32,7 +32,7 @@ if(isset($_POST['forminscription']))
 				':pseudo' => $pseudo, 
 				':pass' => $pass
 				));
-				$erreur ='Bonjour " ' . $pseudo .  ' " et ton mdp crypté est " ' . $pass .' " et ATTENTION gardez une copie de votre mot de passe crypté car vous devrez vous en servir pour vous connecter!';
+				$bon ='Bonjour " ' . $pseudo .  ' " et ton mdp crypté est " ' . $pass .' " et ATTENTION gardez une copie de votre mot de passe crypté car vous devrez vous en servir pour vous connecter!';
 			
 			}
 			
@@ -146,6 +146,12 @@ if(isset($erreur))
 
 
 ?>
+<?php
+		if(isset($bon))
+		{
+		echo '<font color="green">'.$bon."</font>";
+		}
+	?>
 
 </div>	
 

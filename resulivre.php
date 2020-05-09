@@ -118,14 +118,9 @@ if (isset($_SESSION['pseudoCompte']))
 							
 								<div class="livre">
 								
-								
-									
-									
-									
-									
 									<div class="d-flex justify-content-center form_container">
-										<form>
-											
+										
+										
 											<div class="input-group mb-3">
 													<div class="input-group-append">
 														<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -135,38 +130,86 @@ if (isset($_SESSION['pseudoCompte']))
 											<div class="d-flex justify-content-center mt-3 login_container">
 												
 												
-											<?php  //Lire la description
-											// Ici j'ai essayé de récupérer les informations du livre rechercher
-													$info = $_POST['livre'];
-													//J' avais pensé à faire ca mais cela ne marche pas car il ne retrouve pas la variable $livre de la page recherche et je ne sais pas comment lui communiquer l'information.
-													//$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre FROM livre WHERE nomLivre = "' . $livre['nomLivre'] . '" ');
+												<?php  //Lire la description
+											
 													
-													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre WHERE nomLivre = "' . $info . '" ');
+													$resL = $pdo->prepare('SELECT descriptionLivre, nomLivre, auteurLivre FROM livre WHERE nomLivre = "' . $_POST['livre'] . '" ');
 													$resL->execute();
 													while($data = $resL->fetch(PDO::FETCH_ASSOC))
 														// Et la je veux récuperer la description du livre
 													
 														{
 															// Ici je veux l'afficher
-															echo 'Nom du Livre : '.$data['nomLivre']; ?><br>
-															<?php echo 'Auteur du livre : '.$data['auteurLivre']?> <br><br>
+															echo 'Nom du Livre : '.$data['nomLivre']; ?><br><br>
+															<?php echo 'Auteur du livre : '.$data['auteurLivre']?> <br><br><br><br>
 															<?php echo $data['descriptionLivre'];?>
 															<br><br>
 															<?php
 														}
-														
-											?>
-										
-											
+													
+												?>
+												
+															<form method="post">
+																<input type="submit" name="emprunt"  class="btn login_btn" value="emprunter"></input>	
+															</form>	
+															<?php  //Gérer les emprunts
+															
+															// Mais j'ai l'impression que ca refresh la page et donc cela ne peut pas marcher car aucun nom de livre est séléctionné
+															
+																	if(isset($POST['emprunt']))
+																	{
+																		// Ici nous cherchons les informations avec le nom du livre.
+																		$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' .$_POST['livre']. '" ');
+																		$emp->execute();
+																		$res = $emp->fetch();
+																		
+																		echo $res[0];
+																		
+																		if($res[0]>0)
+																		{
+																			// Ici on désincrémente la variable res
+																			$emp = $res[0]-1;
+																			// Ici nous modifions les valeurs en fonction des valeurs utilisée
+																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$emp.'" WHERE nomLivre = "' .$_POST['livre']. '"');
+																			$emprunt->execute();
+																			
+																			$bon = "Ce livre à bien était emprunté !";
+																		}
+																		else
+																		{
+																			$erreur = "Nous n'avons plus se livre en stock !";
+																		}
+																	}	
+																		?>
+																		
+																		<br><br>
+																		
+																		<?php
+																			if(isset($bon))
+																			{
+																			echo '<font color="green">'.$bon."</font>";
+																			}
+																		?>
+																		<?php
+																			if(isset($erreur))
+																			{
+																			echo '<font color="red">'.$erreur."</font>";
+																			}
+																		?>
+															
+															
+																
+															<?php		
+															?>
 											</div>
-											
-										</form>
+										
 									</div>
 								</div>
 							</div>
 						</div>
 
 	</div>
+	
 	
 
 	<footer>
