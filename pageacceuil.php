@@ -153,7 +153,9 @@ if (isset($_GET['recherche']))
 								</div>	
 								
 							<div class="d-flex justify-content-center mt-3 login_container">
-								<a href="resulivre.php"><button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button></a>
+							<form action="resulivre.php">
+								<button type="button" name="button" class="btn login_btn"> Voir plus de détail sur le livre en question</button>
+							</form>
 						   </div>
 							</form>
 						</div>
