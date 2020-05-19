@@ -179,44 +179,6 @@ if (isset($_GET['recherche']))
 															<br>
 															
 															
-															<form method="POST" >
-																<input type="submit" name="buttonE"  class="btn login_btn" value="emprunter"></input>													
-															</form>
-															
-															<?php  //Gérer les emprunts
-																
-															// Je n'ai toujours pas trouvé le problème pour le bouton
-
-																	if (isset($_POST['buttonE']))
-																	{
-																		// Ici nous cherchons les informations avec le nom du livre.
-																		$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE idLivre = "' . $livre['idLivre'] . '" ');
-																		$emp->execute();
-																		$res = $emp->fetch();
-																		
-																		echo $res[0];
-																		
-																		if($res[0]>0)
-																		{
-																			// Ici on désincrémente la variable res
-																			$emp = $res[0]-1;
-																			// Ici nous modifions les valeurs en fonction des valeurs utilisée
-																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$emp.'" WHERE idLivre = "' . $livre['idLivre'] . '"');
-																			$emprunt->execute();
-																			
-																			$bon = "Ce livre à bien était emprunté !";
-																		}
-																		else
-																		{
-																			$erreur = "Nous n'avons plus se livre en stock !";
-																		}
-																	}
-																	
-															?>
-															
-														
-														
-														
 													</div>
 													
 												</label>

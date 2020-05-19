@@ -104,10 +104,11 @@ if (isset($_SESSION['pseudoCompte']))
 
 				<div class="texteclassement">
 
-				<div style="margin-top: 150px;"><font size="10">
-				Résumé du Livre : 
-				</font></div>
-				<br><br>
+					<div style="margin-top: 150px;"><font size="10">
+					Résumé du Livre : 
+					</font></div>
+					<br><br>
+					
 				</div>
 
 				<center>
@@ -142,19 +143,22 @@ if (isset($_SESSION['pseudoCompte']))
 													
 												?>
 												
-															<form method="post">
+															<form method="POST">
+																<input type="hidden" name="livre" value="<?php echo htmlspecialchars($_POST['livre']); //Permet d'envoyer la valeur sur la page resulivre.php ?>"/>
 																<input type="submit" name="emprunt"  class="btn login_btn" value="emprunter"></input>	
 															</form>	
 															<?php  //Gérer les emprunts
 															
 															// Mais j'ai l'impression que ca refresh la page et donc cela ne peut pas marcher car aucun nom de livre est séléctionné
-															
-																	if(isset($POST['emprunt']))
+																	
+																	if(isset($_POST['emprunt']))
 																	{
 																		// Ici nous cherchons les informations avec le nom du livre.
 																		$emp = $pdo -> prepare('SELECT nbLivre FROM livre WHERE nomLivre = "' .$_POST['livre']. '" ');
 																		$emp->execute();
 																		$res = $emp->fetch();
+																		
+																		
 																		
 																		if($res[0]>0)
 																		{
@@ -164,9 +168,8 @@ if (isset($_SESSION['pseudoCompte']))
 																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$emp.'" WHERE nomLivre = "' .$_POST['livre']. '"');
 																			$emprunt->execute();
 																			
-																			echo $res[0];
 																			
-																			$bon = "Ce livre à bien était emprunté !";
+																			$bon = "Ce livre a bien était emprunté !";
 																		}
 																		else
 																		{
@@ -193,8 +196,11 @@ if (isset($_SESSION['pseudoCompte']))
 											</div>
 										
 									</div>
+									
 								</div>
+								
 							</div>
+							
 						</div>
 
 	</div>

@@ -23,7 +23,7 @@ if (isset($_POST['rendre']))
 	$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$rendreL.'" WHERE nomLivre = "' . $livre . '"');
 	$emprunt->execute();
 		
-	$bon = "Ce livre à bien était rendu !";
+	$bon = "Ce livre a bien était rendu !";
 	}
 	else
 	{
