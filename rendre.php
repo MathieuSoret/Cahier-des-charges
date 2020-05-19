@@ -61,7 +61,7 @@ if (isset($_POST['rendre']))
 				
 				<main>
 					<div class="Biblio">		
-						<h1>Librairie de Veretz</h1>
+						<h1>Bibliothéque de Veretz</h1>
 					</div>
 				</main>
 				

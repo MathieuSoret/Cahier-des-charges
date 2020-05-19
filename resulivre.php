@@ -55,7 +55,7 @@ if (isset($_SESSION['pseudoCompte']))
 					
 					<main>
 						<div class="Biblio">		
-							<h1>Librairie de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
+							<h1>Bibliothéque de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
 						</div>
 					</main>
 							  

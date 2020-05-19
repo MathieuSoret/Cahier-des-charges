@@ -56,7 +56,7 @@ if (isset($_SESSION['pseudoCompte']))
 					
 						<main>
 							<div class="Biblio">		
-								<h1>Librairie de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
+								<h1>Bibliothéque de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
 							</div>
 						</main>
 					
@@ -114,7 +114,7 @@ if (isset($_SESSION['pseudoCompte']))
 		<div class="texteclassement">
 
 			<div style="margin-top: 200px;"><font size="12">
-			Information trouvé grâce au mot  : " <?php if ($donnees = $_GET['q']){echo $donnees;} else	{$erreur = "Ce livre n'éxiste pas dans la bibliothèque !";} //Ici nous affichons le resultat de la recherche?> "
+			Information trouvée grâce au mot  : " <?php if ($donnees = $_GET['q']){echo $donnees;} else	{$erreur = "Ce livre n'éxiste pas dans la bibliothèque !";} //Ici nous affichons le resultat de la recherche?> "
 			</font></div>
 
 		</div>
