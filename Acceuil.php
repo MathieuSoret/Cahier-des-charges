@@ -101,7 +101,8 @@ if(isset($_POST['formconnexion']))
 </head>
 admin : $2y$10$V3lb3C8NFxeSoyjOWVzVK.IEjMm2lNmPBnOboAk.VQzlim00DwtbG <br>
 mathieu : 123 <br>
-q : s
+Pierre-Nicolas : $2y$10$7H4867hO6ugbdEEbJyDSqekaws.8FGvbm6ObgX6kVJxQnmWVfxce2<br>
+
 <body>
 
 <form action="Acceuil.php" method="post">

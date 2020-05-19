@@ -1,6 +1,6 @@
 <?php
 
-include("debug.php");
+
 
 session_start();
 

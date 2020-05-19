@@ -147,7 +147,7 @@ if (isset($_GET['recherche']))
 					<div class="cadre1">
 
 						<div class="d-flex justify-content-center form_container">
-							<form>
+							
 								<div class="input-group mb-3">
 									<label for="site-search">Nom du Livre:  </label>							
 								</div>	
@@ -157,7 +157,7 @@ if (isset($_GET['recherche']))
 								<input type="submit" name="button" class="btn login_btn" value="Voir la description du livre"> </input>
 							</form>
 						   </div>
-							</form>
+							
 						</div>
 				
 						
@@ -172,7 +172,7 @@ if (isset($_GET['recherche']))
 					<div class="cadre2">
 
 						<div class="d-flex justify-content-center form_container">
-							<form>
+							
 								<div class="input-group mb-3">
 									<div class="input-group-append">
 										<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -185,7 +185,7 @@ if (isset($_GET['recherche']))
 								<input type="submit" name="button" class="btn login_btn" value="Voir la description du livre"> </input>
 							</form>
 						   </div>
-							</form>
+							
 						</div>
 				
 				
@@ -201,7 +201,7 @@ if (isset($_GET['recherche']))
 					<div class="cadre3">
 
 						<div class="d-flex justify-content-center form_container">
-							<form>
+							
 								<div class="input-group mb-3">
 									<div class="input-group-append">
 										<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -211,11 +211,13 @@ if (isset($_GET['recherche']))
 								
 								
 							<div class="d-flex justify-content-center mt-3 login_container">
+							
 							<form action="resulivre.php">
 								<input type="submit" name="button" class="btn login_btn" value="Voir la description du livre"> </input>
 							</form>
+							
 						   </div>
-							</form>
+							
 						</div>
 				
 				

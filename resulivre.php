@@ -120,13 +120,6 @@ if (isset($_SESSION['pseudoCompte']))
 								
 									<div class="d-flex justify-content-center form_container">
 										
-										
-											<div class="input-group mb-3">
-													<div class="input-group-append">
-														<span class="input-group-text"><i class="fas fa-user"></i></span>
-													</div>							
-											</div>
-											
 											<div class="d-flex justify-content-center mt-3 login_container">
 												
 												
@@ -163,8 +156,6 @@ if (isset($_SESSION['pseudoCompte']))
 																		$emp->execute();
 																		$res = $emp->fetch();
 																		
-																		echo $res[0];
-																		
 																		if($res[0]>0)
 																		{
 																			// Ici on désincrémente la variable res
@@ -172,6 +163,8 @@ if (isset($_SESSION['pseudoCompte']))
 																			// Ici nous modifions les valeurs en fonction des valeurs utilisée
 																			$emprunt=$pdo->prepare('UPDATE livre SET nbLivre ="'.$emp.'" WHERE nomLivre = "' .$_POST['livre']. '"');
 																			$emprunt->execute();
+																			
+																			echo $res[0];
 																			
 																			$bon = "Ce livre à bien était emprunté !";
 																		}
@@ -197,10 +190,6 @@ if (isset($_SESSION['pseudoCompte']))
 																			}
 																		?>
 															
-															
-																
-															<?php		
-															?>
 											</div>
 										
 									</div>
