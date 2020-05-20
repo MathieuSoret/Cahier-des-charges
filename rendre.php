@@ -27,7 +27,7 @@ if (isset($_POST['rendre']))
 	}
 	else
 	{
-		$erreur = "Nous n'avons plus se livre en stock !";
+		$erreur = "Nous n'avons plus ce livre en stock !";
 	}
 }	
 
@@ -70,7 +70,7 @@ if (isset($_POST['rendre']))
 	</header>
 
 <div align="center">
-<h2>Page de suppression d'un livre</h2>
+<h2>Page pour rendre un livre</h2>
 <br><br>
 
 
