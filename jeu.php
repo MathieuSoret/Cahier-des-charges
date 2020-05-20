@@ -26,6 +26,7 @@ if (isset($_SESSION['pseudoCompte']))
 <head>
 
     <meta charset="utf-8" />
+	<title>Bibliothéque de Veretz </title>
 	<link rel="stylesheet" href="petite_resolution.css" />
 	<link rel="stylesheet" href="css/css.css" />
 	<script type="text/javascript" ></script>
@@ -50,7 +51,7 @@ if (isset($_SESSION['pseudoCompte']))
 												
 												<main>
 													<div class="Biblio">		
-														<h1>Librairie de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
+														<h1>Bibliothéque de Veretz  " <?php echo 'Bonjour ' .$_SESSION['pseudoCompte']; ?>"  </h1>
 													</div>
 												</main>
 												
